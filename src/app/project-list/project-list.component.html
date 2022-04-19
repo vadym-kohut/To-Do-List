@@ -7,46 +7,11 @@
     <span class="fs-5 fw-semibold">ToDo</span>
   </a>
   <ul class="list-unstyled ps-0">
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#home-collapse" aria-expanded="true">
-        Work
-      </button>
-      <div class="collapse show" id="home-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Today</a></li>
-          <li><a href="#" class="link-dark rounded">This week</a></li>
-          <li><a href="#" class="link-dark rounded">This month</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#dashboard-collapse" aria-expanded="false">
-        Home
-      </button>
-      <div class="collapse" id="dashboard-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Today</a></li>
-          <li><a href="#" class="link-dark rounded">This week</a></li>
-          <li><a href="#" class="link-dark rounded">This month</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#orders-collapse" aria-expanded="false">
-        Orders
-      </button>
-      <div class="collapse" id="orders-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">New</a></li>
-          <li><a href="#" class="link-dark rounded">Processed</a></li>
-          <li><a href="#" class="link-dark rounded">Shipped</a></li>
-          <li><a href="#" class="link-dark rounded">Returned</a></li>
-        </ul>
-      </div>
-    </li>
+
+    <app-project *ngFor="let project of projects" [subprojects]="project.subprojects" [title]="project.title">
+    </app-project>
+
+
     <li class="border-top my-3"></li>
     <li class="mb-1">
       <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"

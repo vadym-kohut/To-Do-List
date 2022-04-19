@@ -7,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectListComponent implements OnInit {
 
+  projects: any[] = [
+    {
+      title: 'Work',
+      subprojects: ['Today', 'This week', 'This month']
+    },
+    {
+      title: 'Home',
+      subprojects: ['Today', 'This week', 'This month']
+    },
+    {
+      title: 'Orders',
+      subprojects: ['Today', 'This week', 'This month']
+    }
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
