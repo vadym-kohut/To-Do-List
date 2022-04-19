@@ -1,37 +1,6 @@
-<div class="list-group-item d-flex gap-2">
-  <label class="d-flex gap-2">
-    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-    <span class="list-item-text flex-grow-1">
-      First task
-      <small class="d-block text-muted">Add some task description</small>
-      <span class="badge bg-danger">Danger</span>
-    </span>
-  </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
-</div>
+<app-task *ngFor="let task of tasks" [name]="task.title" [description]="task.description" [tags]="task.tags">
 
-<div class="list-group-item d-flex gap-2">
-  <label class="d-flex gap-2">
-    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-    <span class="list-item-text flex-grow-1">
-      Second task
-      <small class="d-block text-muted">Add some task description</small>
-    </span>
-  </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
-</div>
-
-<div class="list-group-item d-flex gap-2">
-  <label class="d-flex gap-2">
-    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-    <span class="list-item-text flex-grow-1">
-      Third task
-      <small class="d-block text-muted">Add some task description</small>
-      <span class="badge rounded-pill bg-success">Success</span>
-    </span>
-  </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
-</div>
+</app-task>
 
 <div class="d-flex gap-2 mt-2 justify-content-end">
   <button type="button" class="btn btn-primary">+ Add task</button>
