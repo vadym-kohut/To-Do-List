@@ -11,6 +11,9 @@ export class ProjectComponent implements OnInit {
   title = '';
 
   @Input()
+  dataBsTarget = '';
+
+  @Input()
   subprojects = [];
 
   constructor() { }

@@ -8,7 +8,8 @@
   </a>
   <ul class="list-unstyled ps-0">
 
-    <app-project *ngFor="let project of projects" [subprojects]="project.subprojects" [title]="project.title">
+    <app-project *ngFor="let project of projects" [subprojects]="project.subprojects" [title]="project.title"
+      [dataBsTarget]="project.dataBsTarget">
     </app-project>
 
 
