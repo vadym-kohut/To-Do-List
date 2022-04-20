@@ -89,15 +89,16 @@
 
       <app-header></app-header>
 
+      <nav>
+        <ul>
+          <li><a routerLink="/task-list" routerLinkActive="active">Task list</a></li>
+          <li><a routerLink="/add" routerLinkActive="active">Add task</a></li>
+        </ul>
+      </nav>
       <!-- Input group -->
-
-      <app-task-add-form></app-task-add-form>
-
-      <hr>
-
       <!-- ToDo items -->
 
-      <app-task-list></app-task-list>
+      <router-outlet></router-outlet>
 
     </div>
 
