@@ -10,5 +10,6 @@
       <span class="badge bg-danger me-1" *ngFor="let tag of task.tags">{{tag}}</span>
     </span>
   </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
+  <img (click)="addButtonEvent(task.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end"
+    src="/assets/x.svg" alt="X">
 </div>
