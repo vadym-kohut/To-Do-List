@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -18,7 +19,12 @@ export class TaskComponent implements OnInit {
     this.buttonEvent.emit(value);
   }
 
-  constructor() { }
+  navToEdit = (id: number) => {
+    console.log('edit', id);
+    this.router.navigate(['edit', id]);
+  }
+
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

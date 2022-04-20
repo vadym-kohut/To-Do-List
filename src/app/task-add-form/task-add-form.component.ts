@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-add-form',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskAddFormComponent implements OnInit {
 
-  constructor() { }
+  navToTaskList = () => {
+    this.router.navigateByUrl('/tasl-list');
+  }
+
+  addNewTask = () => {
+    console.log('Task Added!');
+  }
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log('id: ', Number(this.route.snapshot.paramMap.get('id')));
   }
 
 }

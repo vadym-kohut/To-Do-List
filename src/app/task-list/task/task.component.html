@@ -10,6 +10,7 @@
       <span class="badge bg-danger me-1" *ngFor="let tag of task.tags">{{tag}}</span>
     </span>
   </label>
+  <button class="btn btn-sm btn-outline-warning px-3 py-0" (click)="navToEdit(task.id)">Edit</button>
   <img (click)="addButtonEvent(task.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end"
     src="/assets/x.svg" alt="X">
 </div>
