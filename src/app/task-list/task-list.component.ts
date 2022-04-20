@@ -38,9 +38,8 @@ export class TaskListComponent implements OnInit {
     }
   ];
 
-  deleteTask(clickedTaskId: number) {
-    console.log(clickedTaskId);
-    this.tasks.splice(clickedTaskId, 1);
+  deleteTask(id: number) {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
   constructor() { }
