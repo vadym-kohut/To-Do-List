@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from './task';
 
 @Component({
   selector: 'app-task-list',
@@ -7,21 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks: any[] = [
+  tasks: Task[] = [
     {
       title: 'task1',
-      description: 'qweasdzxc1',
-      tags: ['tag1', 'tag2']
+      description: 'First description',
+      tags: ['tag1', 'tag2'],
+      priority: 1
     },
     {
       title: 'task2',
-      description: 'qweasdzxc2',
-      tags: ['tag3', 'tag4', 'tag5']
+      description: 'Second description',
+      tags: ['tag3', 'tag4', 'tag5'],
+      priority: 2
     },
     {
       title: 'task3',
-      description: 'qweasdzxc3',
-      tags: []
+      description: 'Third description',
+      tags: ['tag3', 'tag4', 'tag5'],
+    },
+    {
+      title: 'task4',
+      description: 'Fourth description',
+      tags: [],
+      priority: 3
     }
   ];
   constructor() { }

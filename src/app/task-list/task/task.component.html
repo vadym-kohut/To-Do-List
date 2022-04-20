@@ -2,33 +2,13 @@
   <label class="d-flex gap-2">
     <input class="form-check-input flex-shrink-0" type="checkbox" value="">
     <span class="list-item-text flex-grow-1">
-      {{name}}
-      <small class="d-block text-muted">{{description}}</small>
-      <span class="badge bg-danger" *ngFor="let tag of tags">{{tag}}</span>
+      <span
+        [ngClass]="{'fw-bold' : task.priority == 1, 'fw-normal' : task.priority == 2 || task.priority == null, 'fw-light' : task.priority == 3}">
+        {{task.title}}
+      </span>
+      <small class="d-block text-muted">{{task.description}}</small>
+      <span class="badge bg-danger me-1" *ngFor="let tag of task.tags">{{tag}}</span>
     </span>
   </label>
   <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
 </div>
-
-<!-- <div class="list-group-item d-flex gap-2">
-  <label class="d-flex gap-2">
-    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-    <span class="list-item-text flex-grow-1">
-      Second task
-      <small class="d-block text-muted">Add some task description</small>
-    </span>
-  </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
-</div>
-
-<div class="list-group-item d-flex gap-2">
-  <label class="d-flex gap-2">
-    <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-    <span class="list-item-text flex-grow-1">
-      Third task
-      <small class="d-block text-muted">Add some task description</small>
-      <span class="badge rounded-pill bg-success">Success</span>
-    </span>
-  </label>
-  <img data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end" src="/src/assets/x.svg" alt="">
-</div> -->

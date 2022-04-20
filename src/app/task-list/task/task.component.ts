@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-task',
@@ -7,11 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
   @Input()
-  name = '';
-  @Input()
-  description = '';
-  @Input()
-  tags = [];
+  task!: Task;
 
   constructor() { }
 
