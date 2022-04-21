@@ -14,7 +14,8 @@ const routes: Routes = [
     path: 'add', component: TaskAddFormComponent,
     children: [
       { path: 'basic', component: BasicAddFormComponent },
-      { path: 'extended', component: ExtendedAddFormComponent }
+      { path: 'extended', component: ExtendedAddFormComponent },
+      { path: '**', redirectTo: 'basic' }
     ]
   },
   { path: 'edit/:id', component: TaskAddFormComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
     path: 'edit-project/:id', component: EditProjectComponent,
     children: [
       { path: 'basic', component: BasicEditProjectComponent },
-      { path: 'details', component: DetailsEditProjectComponent }
+      { path: 'details', component: DetailsEditProjectComponent },
+      { path: '**', redirectTo: 'basic' }
     ]
   },
   { path: 'edit-project', component: EditProjectComponent },

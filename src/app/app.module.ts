@@ -14,6 +14,8 @@ import { DetailsEditProjectComponent } from './project-list/edit-project/details
 import { BasicEditProjectComponent } from './project-list/edit-project/basic-edit-project/basic-edit-project.component';
 import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
 import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/exte
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

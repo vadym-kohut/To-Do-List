@@ -1,30 +1,28 @@
-<div class="input-group mb-2">
-  <span class="input-group-text" id="addon-wrapping">Name</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-    aria-describedby="addon-wrapping">
-</div>
-<div class="input-group mb-2">
-  <span class="input-group-text" id="addon-wrapping">Last Name</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-    aria-describedby="addon-wrapping">
-</div>
-<div class="input-group mb-2">
-  <input type="text" class="form-control" aria-label="Text input with dropdown button">
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-    aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li>
-      <hr class="dropdown-divider">
-    </li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
+<form (ngSubmit)="onSubmit()">
 
-<div class="form-floating mb-2">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-    style="height: 100px"></textarea>
-  <label for="floatingTextarea2">Comments</label>
-</div>
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="addon-wrapping">Title</span>
+    <input [(ngModel)]="taskTitle" name="taskTitle" type="text" class="form-control" placeholder="Title"
+      aria-label="Title" aria-describedby="addon-wrapping">
+  </div>
+
+  <div class="form-floating mb-2">
+    <textarea [(ngModel)]="taskDescription" class="form-control h-100" placeholder="Write description here"
+      id="taskDescription" name="taskDescription"></textarea>
+    <label for="taskDescription">Description</label>
+  </div>
+
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="addon-wrapping">Priority</span>
+    <select class="form-select" aria-label="Default select example" name="taskPriority" [(ngModel)]="taskPriority">
+      <option value=" 1">High</option>
+      <option value="2">Medium</option>
+      <option value="3">Low</option>
+    </select>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button id="liveToastBtn" type="button" class="btn btn-outline-danger">Cancel</button>
+    <button id="liveToastBtn" type="submit" class="btn btn-outline-success px-4">Add</button>
+  </div>
+</form>
