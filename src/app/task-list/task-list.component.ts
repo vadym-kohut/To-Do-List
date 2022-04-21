@@ -44,7 +44,7 @@ export class TaskListComponent implements OnInit {
   }
 
   navToAdd = () => {
-    this.router.navigateByUrl('/add');
+    this.router.navigateByUrl('/add/basic');
   }
 
   constructor(private router: Router) { }
