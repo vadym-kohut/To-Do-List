@@ -13,7 +13,7 @@ export class ProjectComponent implements OnInit {
   project!: Project;
 
   navToEdit(id: number) {
-    this.router.navigateByUrl(`edit-project/${id}`);
+    this.router.navigateByUrl(`edit-project/${id}/basic`);
   }
 
   constructor(private router: Router) { }
