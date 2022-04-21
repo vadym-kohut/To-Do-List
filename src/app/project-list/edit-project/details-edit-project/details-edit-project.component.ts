@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsEditProjectComponent implements OnInit {
 
+  taskTitle = '';
+  taskDescription = '';
+  taskPriority: any;
+
+  onSubmit() {
+    console.log(this.taskTitle);
+    console.log(this.taskDescription);
+    console.log(this.taskPriority);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
