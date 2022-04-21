@@ -9,6 +9,9 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskAddFormComponent } from './task-add-form/task-add-form.component';
 import { TaskComponent } from './task-list/task/task.component';
 import { ProjectComponent } from './project-list/project/project.component';
+import { EditProjectComponent } from './project-list/edit-project/edit-project.component';
+import { DetailsEditProjectComponent } from './project-list/edit-project/details-edit-project/details-edit-project.component';
+import { BasicEditProjectComponent } from './project-list/edit-project/basic-edit-project/basic-edit-project.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ProjectComponent } from './project-list/project/project.component';
     TaskListComponent,
     TaskAddFormComponent,
     TaskComponent,
-    ProjectComponent
+    ProjectComponent,
+    EditProjectComponent,
+    DetailsEditProjectComponent,
+    BasicEditProjectComponent
   ],
   imports: [
     BrowserModule,

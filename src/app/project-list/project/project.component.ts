@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Project } from '../project';
 
 @Component({
   selector: 'app-project',
@@ -8,15 +10,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProjectComponent implements OnInit {
 
   @Input()
-  title = '';
+  project!: Project;
 
-  @Input()
-  dataBsTarget = '';
+  navToEdit(id: number) {
+    this.router.navigateByUrl(`edit-project/${id}`);
+  }
 
-  @Input()
-  subprojects = [];
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -1,11 +1,13 @@
 <li class="mb-1">
   <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-    [attr.data-bs-target]="'#' + dataBsTarget + '-collapse'" aria-expanded="true">
-    {{title}}
+    [attr.data-bs-target]="'#' + project.dataBsTarget + '-collapse'" aria-expanded="true">
+    {{project.title}}
   </button>
-  <div class="collapse show" id="{{dataBsTarget}}-collapse">
+  <div class="collapse show" id="{{project.dataBsTarget}}-collapse">
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li *ngFor="let subproject of subprojects"><a href="#" class="link-dark rounded">{{subproject}}</a></li>
+      <li *ngFor="let subproject of project.subprojects"><a href="#" class="link-dark rounded">{{subproject.title}}</a>
+        <button class="btn btn-sm btn-outline-dark px-1 py-0" (click)="navToEdit(subproject.id)">edit</button>
+      </li>
     </ul>
   </div>
 </li>

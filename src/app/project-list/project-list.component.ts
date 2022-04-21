@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from './project';
 
 @Component({
   selector: 'app-project-list',
@@ -7,21 +8,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectListComponent implements OnInit {
 
-  projects: any[] = [
+  projects: Project[] = [
     {
       title: 'Work',
       dataBsTarget: 'home',
-      subprojects: ['Today', 'This week', 'This month']
+      subprojects: [
+        {
+          title: 'Today',
+          id: 1
+        },
+        {
+          title: 'This week',
+          id: 2
+        },
+        {
+          title: 'This month',
+          id: 3
+        }
+      ],
+      id: 1
     },
     {
       title: 'Home',
       dataBsTarget: 'dashboard',
-      subprojects: ['Today', 'This week', 'This month']
+      subprojects: [
+        {
+          title: 'Today',
+          id: 1
+        },
+        {
+          title: 'This week',
+          id: 2
+        },
+        {
+          title: 'This month',
+          id: 3
+        }
+      ],
+      id: 2
     },
     {
       title: 'Orders',
       dataBsTarget: 'orders',
-      subprojects: ['Today', 'This week', 'This month']
+      subprojects: [
+        {
+          title: 'Today',
+          id: 1
+        },
+        {
+          title: 'This week',
+          id: 2
+        },
+        {
+          title: 'This month',
+          id: 3
+        }
+      ],
+      id: 3
     }
   ]
 
