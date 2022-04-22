@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from './task-list/task';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +13,27 @@ export class TaskStoreService {
 
   tasks: Task[] = [
     {
-      title: 'task1',
+      title: 'First task',
       description: 'First description',
       tags: ['tag1', 'tag2'],
       priority: 1,
       id: 0
     },
     {
-      title: 'task2',
+      title: 'Second task',
       description: 'Second description',
       tags: ['tag3', 'tag4', 'tag5'],
       priority: 2,
       id: 1
     },
     {
-      title: 'task3',
+      title: 'Third task',
       description: 'Third description',
       tags: ['tag3', 'tag4', 'tag5'],
       id: 2
     },
     {
-      title: 'task4',
+      title: 'Fourth task',
       description: 'Fourth description',
       tags: [],
       priority: 3,
@@ -54,4 +58,5 @@ export class TaskStoreService {
     this.tasks.push(task);
     task.id = this.tasks.length + 1;
   }
+
 }

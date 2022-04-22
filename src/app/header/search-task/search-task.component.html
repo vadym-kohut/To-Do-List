@@ -1,0 +1,10 @@
+<form class="col-12 col-lg-auto mb-3 mb-lg-0">
+  <input name="search-box" id="search-box" type="search" class="form-control" placeholder="Search task..."
+    aria-label="Search" #searchBox (input)="logValue(searchBox.value)">
+
+  <ul *ngFor="let task of tasks">
+    <li *ngIf="searchBox.value == task.title">
+      <a href="">{{task.title}}</a>
+    </li>
+  </ul>
+</form>
