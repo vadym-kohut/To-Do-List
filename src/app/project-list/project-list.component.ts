@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from './project';
+import { ProjectStoreService } from '../project-store.service';
 
 @Component({
   selector: 'app-project-list',
@@ -8,67 +8,9 @@ import { Project } from './project';
 })
 export class ProjectListComponent implements OnInit {
 
-  projects: Project[] = [
-    {
-      title: 'Work',
-      dataBsTarget: 'home',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
-      id: 1
-    },
-    {
-      title: 'Home',
-      dataBsTarget: 'dashboard',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
-      id: 2
-    },
-    {
-      title: 'Orders',
-      dataBsTarget: 'orders',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
-      id: 3
-    }
-  ]
+  constructor(private projectStore: ProjectStoreService) { }
 
-  constructor() { }
+  projects = this.projectStore.projects;
 
   ngOnInit(): void {
   }
