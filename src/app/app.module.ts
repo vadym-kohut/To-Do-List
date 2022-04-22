@@ -15,6 +15,8 @@ import { BasicEditProjectComponent } from './project-list/edit-project/basic-edi
 import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
 import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],

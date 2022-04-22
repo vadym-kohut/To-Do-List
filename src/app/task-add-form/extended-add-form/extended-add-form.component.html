@@ -2,20 +2,20 @@
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Title</span>
-    <input [(ngModel)]="taskTitle" name="taskTitle" type="text" class="form-control" placeholder="Title"
+    <input [(ngModel)]="newTask.title" name="taskTitle" type="text" class="form-control" placeholder="Title"
       aria-label="Title" aria-describedby="addon-wrapping">
   </div>
 
   <div class="form-floating mb-2">
-    <textarea [(ngModel)]="taskDescription" class="form-control h-100" placeholder="Write description here"
+    <textarea [(ngModel)]="newTask.description" class="form-control h-100" placeholder="Write description here"
       id="taskDescription" name="taskDescription"></textarea>
     <label for="taskDescription">Description</label>
   </div>
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Priority</span>
-    <select class="form-select" aria-label="Default select example" name="taskPriority" [(ngModel)]="taskPriority">
-      <option value=" 1">High</option>
+    <select class="form-select" aria-label="Default select example" name="taskPriority" [(ngModel)]="newTask.priority">
+      <option value="1">High</option>
       <option value="2">Medium</option>
       <option value="3">Low</option>
     </select>
