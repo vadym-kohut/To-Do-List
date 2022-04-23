@@ -21,6 +21,8 @@ export class TaskListComponent implements OnInit {
     this.router.navigateByUrl('/add/basic');
   }
 
+
+
   ngOnInit(): void {
   }
 
