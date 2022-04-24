@@ -14,7 +14,7 @@ import { DetailsEditProjectComponent } from './project-list/edit-project/details
 import { BasicEditProjectComponent } from './project-list/edit-project/basic-edit-project/basic-edit-project.component';
 import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
 import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchTaskComponent } from './header/search-task/search-task.component';
 
@@ -40,7 +40,8 @@ import { SearchTaskComponent } from './header/search-task/search-task.component'
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

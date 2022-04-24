@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Task } from 'src/app/task-list/task';
 import { TaskStoreService } from 'src/app/task-store.service';
 
@@ -10,21 +10,23 @@ import { TaskStoreService } from 'src/app/task-store.service';
 })
 export class ExtendedAddFormComponent implements OnInit {
 
-  newTask: Task = {
-    title: '',
-    description: '',
-    priority: 0,
-    id: 0
-  }
+  // addTaskForm = new FormGroup({
+  //   title: new FormControl(''),
+  //   description: new FormControl(''),
+  //   priority: new FormControl('')
+  // })
 
-  constructor(private taskStore: TaskStoreService) { }
+  addTaskForm = this.fb.group({
+    title: [''],
+    description: [''],
+    priority: ['']
+  })
+
+  constructor(private taskStore: TaskStoreService, private fb: FormBuilder) { }
   tasks = this.taskStore.getTasks();
 
   onSubmit() {
-    this.taskStore.addTask(this.newTask);
-    this.tasks = this.taskStore.getTasks();
-    console.log(this.newTask);
-    console.log(this.taskStore.tasks);
+    console.log(this.addTaskForm.value);
   }
 
   ngOnInit(): void {
