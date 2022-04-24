@@ -17,6 +17,9 @@ import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/exte
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchTaskComponent } from './header/search-task/search-task.component';
+import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
+import { BasicEditTaskComponent } from './task-list/edit-task/basic-edit-task/basic-edit-task.component';
+import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-task/extended-edit-task.component';
 
 
 
@@ -34,7 +37,10 @@ import { SearchTaskComponent } from './header/search-task/search-task.component'
     BasicEditProjectComponent,
     BasicAddFormComponent,
     ExtendedAddFormComponent,
-    SearchTaskComponent
+    SearchTaskComponent,
+    EditTaskComponent,
+    BasicEditTaskComponent,
+    ExtendedEditTaskComponent
   ],
   imports: [
     BrowserModule,

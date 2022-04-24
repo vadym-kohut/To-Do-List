@@ -19,9 +19,9 @@ export class TaskComponent implements OnInit {
     this.buttonEvent.emit(value);
   }
 
-  navToEdit = (id: number) => {
-    console.log('edit', id);
-    this.router.navigate(['edit', id]);
+  navToEditTask = (id: number) => {
+    console.log('edit-task', id);
+    this.router.navigate(['edit-task', id]);
   }
 
   constructor(public router: Router) { }

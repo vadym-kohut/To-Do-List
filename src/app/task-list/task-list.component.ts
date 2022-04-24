@@ -17,8 +17,8 @@ export class TaskListComponent implements OnInit {
     this.tasks = this.taskStore.getTasks();
   }
 
-  navToAdd = () => {
-    this.router.navigateByUrl('/add/basic');
+  navToAddTask = () => {
+    this.router.navigateByUrl('/add-task/basic');
   }
 
 
