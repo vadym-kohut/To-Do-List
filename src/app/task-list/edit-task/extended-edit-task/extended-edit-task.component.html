@@ -2,14 +2,31 @@
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Title</span>
-    <input formControlName="title" name="taskTitle" type="text" class="form-control" placeholder="Title"
-      aria-label="Title" aria-describedby="addon-wrapping">
+    <input formControlName="title" name="title" type="text" class="form-control" placeholder="Title" aria-label="Title"
+      aria-describedby="addon-wrapping">
+  </div>
+
+  <div *ngIf="title && title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+    <div *ngIf="title.errors?.['required']">
+      Title is required!
+    </div>
+    <div *ngIf="title.errors?.['maxlength']">
+      Title must be max 20 characters long!
+    </div>
+    <div *ngIf="title.errors?.['forbiddenTitle']">
+      Task can't be titled 'task'!
+    </div>
   </div>
 
   <div class="form-floating mb-2">
     <textarea formControlName="description" class="form-control h-100" placeholder="Write description here"
-      id="taskDescription" name="taskDescription"></textarea>
-    <label for="taskDescription">Description</label>
+      id="description" name="description"></textarea>
+    <label for="description">Description</label>
+  </div>
+
+  <div class="alert alert-danger"
+    *ngIf="description && description.invalid && (description.dirty || description.touched)">
+    Description must be at least 5 characters long!
   </div>
 
   <div class="input-group mb-2">

@@ -13,10 +13,6 @@ export class TaskAddFormComponent implements OnInit {
     this.router.navigateByUrl('/task-list');
   }
 
-  addNewTask = () => {
-    console.log('Task Added!');
-  }
-
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
