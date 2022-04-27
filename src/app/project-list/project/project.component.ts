@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProjectStoreService } from 'src/app/project-store.service';
 import { Project } from '../project';
 
 @Component({
@@ -12,11 +13,14 @@ export class ProjectComponent implements OnInit {
   @Input()
   project!: Project;
 
-  navToEdit(id: number) {
-    this.router.navigateByUrl(`edit-project/${id}/basic`);
+  @Output()
+  deleteProject = new EventEmitter<number>();
+
+  removeProject(value: number) {
+    this.deleteProject.emit(value);
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private projectStore: ProjectStoreService) { }
 
   ngOnInit(): void {
   }

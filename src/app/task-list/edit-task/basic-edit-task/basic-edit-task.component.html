@@ -1,5 +1,26 @@
-<div class="input-group mb-2">
-  <span class="input-group-text" id="addon-wrapping">Title</span>
-  <input name="taskTitle" type="text" class="form-control" placeholder="Title" aria-label="Title"
-    aria-describedby="addon-wrapping">
-</div>
+<form [formGroup]="addTaskForm">
+
+  <div class="input-group mb-2">
+    <span class="input-group-text" id="addon-wrapping">Title</span>
+    <input name="title" type="text" class="form-control" placeholder="Title" aria-label="Title"
+      aria-describedby="addon-wrapping" formControlName="title">
+  </div>
+
+  <div *ngIf="title && title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+    <div *ngIf="title.errors?.['required']">
+      Title is required!
+    </div>
+    <div *ngIf="title.errors?.['maxlength']">
+      Title must be max 20 characters long!
+    </div>
+    <div *ngIf="title.errors?.['forbiddenTitle']">
+      Task can't be titled 'task'!
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button id="liveToastBtn" type="button" class="btn btn-outline-danger">Cancel</button>
+    <button id="liveToastBtn" type="submit" class="btn btn-outline-success px-4">Add</button>
+  </div>
+
+</form>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Project } from './project-list/project';
 
 @Injectable({
@@ -7,67 +8,38 @@ import { Project } from './project-list/project';
 })
 export class ProjectStoreService {
 
-  projects: Project[] = [
+  private workProjects$ = new BehaviorSubject<Project[]>([
     {
-      title: 'Work',
-      dataBsTarget: 'home',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
+      title: 'First Project',
       id: 1
     },
     {
-      title: 'Home',
-      dataBsTarget: 'dashboard',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
+      title: 'Second Project',
       id: 2
     },
     {
-      title: 'Orders',
-      dataBsTarget: 'orders',
-      subprojects: [
-        {
-          title: 'Today',
-          id: 1
-        },
-        {
-          title: 'This week',
-          id: 2
-        },
-        {
-          title: 'This month',
-          id: 3
-        }
-      ],
+      title: 'Third Project',
       id: 3
+    },
+    {
+      title: 'Fourth Project',
+      id: 4
     }
-  ]
+  ]);
 
   constructor(private router: Router) { }
 
+  getProjects$() {
+    return this.workProjects$.asObservable();
+  }
+
+  addProject(project: Project) {
+    project.id = this.workProjects$.getValue().length + 1;
+    this.workProjects$.next([...this.workProjects$.getValue(), project]);
+  }
+
+  deleteProject(id: number) {
+    this.workProjects$.next(this.workProjects$.getValue().filter((project) => project.id !== id));
+  }
 
 }

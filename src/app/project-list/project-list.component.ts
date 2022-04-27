@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectStoreService } from '../project-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -8,9 +9,17 @@ import { ProjectStoreService } from '../project-store.service';
 })
 export class ProjectListComponent implements OnInit {
 
-  constructor(private projectStore: ProjectStoreService) { }
+  projects$ = this.projectStore.getProjects$();
 
-  projects = this.projectStore.projects;
+  constructor(private router: Router, private projectStore: ProjectStoreService) { }
+
+  deleteProject(id: number) {
+    this.projectStore.deleteProject(id);
+  }
+
+  navToAddProj() {
+    this.router.navigateByUrl('/add-project');
+  }
 
   ngOnInit(): void {
   }

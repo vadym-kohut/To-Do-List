@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { TaskStoreService } from 'src/app/task-store.service';
+import { Priority } from 'src/app/task-add-form/priority';
 
 @Component({
   selector: 'app-task',
@@ -13,10 +15,12 @@ export class TaskComponent implements OnInit {
   task!: Task;
 
   @Output()
-  buttonEvent = new EventEmitter<number>();
+  deleteTask = new EventEmitter<number>();
+
+  priorities = Priority;
 
   addButtonEvent(value: number) {
-    this.buttonEvent.emit(value);
+    this.deleteTask.emit(value);
   }
 
   navToEditTask = (id: number) => {
@@ -24,9 +28,8 @@ export class TaskComponent implements OnInit {
     this.router.navigate(['edit-task', id]);
   }
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private taskListStore: TaskStoreService) { }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Task } from 'src/app/task-list/task';
+import { FormBuilder, Validators } from '@angular/forms';
 import { TaskStoreService } from 'src/app/task-store.service';
+import { Router } from '@angular/router';
+import { Priority } from '../priority';
+import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 
 @Component({
   selector: 'app-extended-add-form',
@@ -10,26 +12,26 @@ import { TaskStoreService } from 'src/app/task-store.service';
 })
 export class ExtendedAddFormComponent implements OnInit {
 
-  // addTaskForm = new FormGroup({
-  //   title: new FormControl(''),
-  //   description: new FormControl(''),
-  //   priority: new FormControl('')
-  // })
-
   addTaskForm = this.fb.group({
-    title: [''],
-    description: [''],
-    priority: ['']
+    title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
+    description: ['', Validators.minLength(5)],
+    priority: Priority
   })
-
-  constructor(private taskStore: TaskStoreService, private fb: FormBuilder) { }
   tasks = this.taskStore.getTasks();
+  priorities = Priority;
+
+  constructor(private taskStore: TaskStoreService, private fb: FormBuilder, private router: Router) { }
+
 
   onSubmit() {
-    console.log(this.addTaskForm.value);
+    this.taskStore.addTask(this.addTaskForm.value);
+    this.router.navigateByUrl('/');
   }
 
   ngOnInit(): void {
   }
+
+  get title() { return this.addTaskForm.get('title')! }
+  get description() { return this.addTaskForm.get('description') }
 
 }
