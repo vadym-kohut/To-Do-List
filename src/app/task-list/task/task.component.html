@@ -3,7 +3,7 @@
     <input class="form-check-input flex-shrink-0" type="checkbox" value="">
     <span class="list-item-text flex-grow-1">
       <span
-        [ngClass]="{'fw-bold' : task.priority === priorities.High, 'fw-normal' : task.priority === priorities.Medium || task.priority === null, 'fw-light' : task.priority === priorities.Low}">
+        [ngClass]="{'fw-bold' : task.priority == priorities.High, 'fw-normal' : task.priority == priorities.Medium || task.priority == null, 'fw-light' : task.priority == priorities.Low}">
         {{task.title}}
       </span>
       <small class="d-block text-muted">{{task.description}}</small>
@@ -11,6 +11,5 @@
     </span>
   </label>
   <button class="btn btn-sm btn-outline-warning px-3 py-0" (click)="navToEditTask(task.id)">Edit</button>
-  <img (click)="addButtonEvent(task.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="float-end"
-    src="/assets/x.svg" alt="X">
+  <img (click)="addButtonEvent(task.id)" class="float-end" src="/assets/x.svg" alt="X">
 </div>
