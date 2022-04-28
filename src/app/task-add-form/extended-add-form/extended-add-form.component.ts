@@ -24,7 +24,7 @@ export class ExtendedAddFormComponent implements OnInit {
 
 
   onSubmit() {
-    this.taskStore.addTask(this.addTaskForm.value);
+    this.taskStore.addTask({ ...this.addTaskForm.value, priority: +this.addTaskForm.value.priority });
     this.router.navigateByUrl('/');
   }
 

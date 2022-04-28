@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from 'src/app/task-list/task';
-import { TaskStoreService } from 'src/app/task-store.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
+import { SearchQueryServiceService } from 'src/app/search-query-service.service';
 
 @Component({
   selector: 'app-search-task',
@@ -9,11 +10,11 @@ import { TaskStoreService } from 'src/app/task-store.service';
 })
 export class SearchTaskComponent implements OnInit {
 
-  constructor(private taskStore: TaskStoreService) { }
+  taskSearch = new FormControl();
+
+  constructor(private queryService: SearchQueryServiceService) { }
 
   ngOnInit(): void {
-
-
+    this.taskSearch.valueChanges.pipe(debounceTime(500)).subscribe(query => this.queryService.setQuery(query));
   }
-
 }

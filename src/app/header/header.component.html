@@ -7,6 +7,14 @@
       <span class="fs-4">ToDo List</span>
     </a>
 
+    <span class="fs-4">{{tasksCount$ | async}} tasks of {{allTasksCount$ | async}}</span>
+
     <app-search-task></app-search-task>
+  </div>
+
+  <div class="container d-flex flex-wrap justify-content-end">
+    <span class="fs-4 p-2">H: {{(taskCountByPriority$ | async)?.High}}</span>
+    <span class="fs-4 p-2">M: {{(taskCountByPriority$ | async)?.Medium}}</span>
+    <span class="fs-4 p-2">L: {{(taskCountByPriority$ | async)?.Low}}</span>
   </div>
 </header>
