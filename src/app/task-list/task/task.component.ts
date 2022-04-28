@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
 
   priorities = Priority;
 
-  addButtonEvent(value: number) {
+  removeTask(value: number) {
     this.deleteTask.emit(value);
   }
 

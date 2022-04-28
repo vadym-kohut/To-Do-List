@@ -18,6 +18,7 @@ import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
 import { BasicEditTaskComponent } from './task-list/edit-task/basic-edit-task/basic-edit-task.component';
 import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-task/extended-edit-task.component';
 import { AddProjectComponent } from './project-list/add-project/add-project.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -36,7 +37,8 @@ import { AddProjectComponent } from './project-list/add-project/add-project.comp
     EditTaskComponent,
     BasicEditTaskComponent,
     ExtendedEditTaskComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

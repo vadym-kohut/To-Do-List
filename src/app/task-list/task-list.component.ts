@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoaderService } from '../loader.service';
 import { TaskStoreService } from '../task-store.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { TaskStoreService } from '../task-store.service';
 export class TaskListComponent implements OnInit {
   tasks$ = this.taskStore.getTasks();
 
-  constructor(private router: Router, private taskStore: TaskStoreService) { }
+  constructor(private router: Router, private taskStore: TaskStoreService, private loaderService: LoaderService) { }
+
+  showLoader() {
+    this.loaderService.showLoader();
+  }
 
   deleteTask(id: number) {
     this.taskStore.deleteTask(id);
@@ -19,8 +24,6 @@ export class TaskListComponent implements OnInit {
   navToAddTask = () => {
     this.router.navigateByUrl('/add-task/basic');
   }
-
-
 
   ngOnInit(): void {
 
