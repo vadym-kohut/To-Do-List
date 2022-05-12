@@ -52,8 +52,8 @@ export class TaskStoreLocalService implements TaskStore {
     return this.tasks$.asObservable();
   }
 
-  getTasksBySearch$(tasks: Observable<Task[]>) {
-    return combineLatest([tasks, this.queryService.getQuery$(), this.projectStore.getProjectToShow$()]).pipe(
+  getTasksBySearch$() {
+    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getProjectToShow$()]).pipe(
       map(([tasks, query, id]) => {
         let filteredTasks = tasks;
         if (id) {
@@ -77,7 +77,7 @@ export class TaskStoreLocalService implements TaskStore {
   }
 
   getTaskCount$(): Observable<number> {
-    return this.getTasksBySearch$(this.tasks$).pipe(
+    return this.getTasksBySearch$().pipe(
       map((tasks: Task[]) => tasks.length)
     );
   }
@@ -89,7 +89,7 @@ export class TaskStoreLocalService implements TaskStore {
   }
 
   getTaskCountByPriority$(): Observable<{ High: number, Medium: number, Low: number }> {
-    return this.getTasksBySearch$(this.tasks$).pipe(
+    return this.getTasksBySearch$().pipe(
       map((tasks: Task[]) => {
         return {
           High: tasks.filter((task) => task.priority === Priority.High).length,

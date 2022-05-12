@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LoaderService } from '../loader.service';
 import { TaskStoreLocalService } from '../task-store-local.service';
 import { TaskStoreRemoteService } from '../task-store-remote.service';
@@ -15,7 +15,7 @@ import { Task } from './task';
 export class TaskListComponent implements OnInit {
   tasks$!: Observable<Task[]>;
 
-  constructor(private router: Router, private taskStore: TaskStoreRemoteService, private loaderService: LoaderService, private toastService: ToastService) { }
+  constructor(private router: Router, private taskStore: TaskStoreLocalService, private loaderService: LoaderService, private toastService: ToastService) { }
 
   showLoader() {
     this.loaderService.showLoader();
@@ -30,7 +30,7 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tasks$ = this.taskStore.getAllTasks$();
+    this.tasks$ = this.taskStore.getTasksBySearch$();
   }
 
   deleteTask(task: Task) {

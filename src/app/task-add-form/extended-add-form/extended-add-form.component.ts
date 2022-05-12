@@ -23,7 +23,7 @@ export class ExtendedAddFormComponent implements OnInit {
   priorities = Priority;
   projects = this.projectStore.getProjects$();
 
-  constructor(private taskStore: TaskStoreRemoteService, private fb: FormBuilder, private router: Router,
+  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder, private router: Router,
     private projectStore: ProjectStoreService) { }
 
 
