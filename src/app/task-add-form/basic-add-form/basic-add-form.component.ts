@@ -16,7 +16,7 @@ export class BasicAddFormComponent implements OnInit {
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
   })
 
-  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder, private router: Router) { }
+  constructor(private taskStore: TaskStoreRemoteService, private fb: FormBuilder, private router: Router) { }
 
   onSubmit() {
     this.taskStore.addTask(this.addTaskForm.value);
