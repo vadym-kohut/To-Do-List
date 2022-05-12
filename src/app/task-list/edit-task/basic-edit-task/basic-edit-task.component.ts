@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TaskStoreService } from 'src/app/task-store.service';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
+import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 
 @Component({
   selector: 'app-basic-edit-task',
@@ -10,7 +10,7 @@ import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 })
 export class BasicEditTaskComponent implements OnInit {
 
-  constructor(private taskStore: TaskStoreService, private fb: FormBuilder) { }
+  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder) { }
 
   addTaskForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]]

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoaderService } from '../loader.service';
-import { TaskStoreService } from '../task-store.service';
+import { TaskStoreLocalService } from '../task-store-local.service';
+import { TaskStoreRemoteService } from '../task-store-remote.service';
+import { ToastService } from '../toast.service';
+import { Task } from './task';
 
 @Component({
   selector: 'app-task-list',
@@ -9,16 +13,16 @@ import { TaskStoreService } from '../task-store.service';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
-  tasks$ = this.taskStore.getTasks();
+  tasks$!: Observable<Task[]>;
 
-  constructor(private router: Router, private taskStore: TaskStoreService, private loaderService: LoaderService) { }
+  constructor(private router: Router, private taskStore: TaskStoreRemoteService, private loaderService: LoaderService, private toastService: ToastService) { }
 
   showLoader() {
     this.loaderService.showLoader();
   }
 
-  deleteTask(id: number) {
-    this.taskStore.deleteTask(id);
+  showToast() {
+    this.toastService.showToast(new Date().toString());
   }
 
   navToAddTask = () => {
@@ -26,7 +30,11 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tasks$ = this.taskStore.getAllTasks$();
+  }
 
+  deleteTask(task: Task) {
+    this.taskStore.deleteTask(task);
   }
 
 }

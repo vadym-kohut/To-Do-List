@@ -11,7 +11,7 @@ export class LoaderService {
   constructor() { }
 
   getLoaderShown() {
-    return this.loaderShown$.pipe(tap(console.log));
+    return this.loaderShown$;
   }
 
   showLoader() {

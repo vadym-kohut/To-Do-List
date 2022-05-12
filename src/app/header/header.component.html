@@ -4,7 +4,12 @@
       <svg class="bi me-2" width="40" height="32">
         <use xlink:href="#bootstrap"></use>
       </svg>
-      <span class="fs-4">ToDo List</span>
+      <span class="fs-4" *ngIf="!(selectedProjectName$ | async)">All tasks</span>
+      <ng-container *ngIf="selectedProjectName$ | async">
+        <span class="fs-4">{{selectedProjectName$ | async}} tasks</span>
+        <button class="btn btn-sm btn-outline-danger ms-2" (click)="clearProjectFilter()">X</button>
+      </ng-container>
+
     </a>
 
     <span class="fs-4">{{tasksCount$ | async}} tasks of {{allTasksCount$ | async}}</span>

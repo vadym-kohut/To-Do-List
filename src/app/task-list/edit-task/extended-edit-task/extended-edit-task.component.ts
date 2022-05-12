@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TaskStoreService } from 'src/app/task-store.service';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
+import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 
 @Component({
   selector: 'app-extended-edit-task',
@@ -16,11 +16,9 @@ export class ExtendedEditTaskComponent implements OnInit {
     priority: ['']
   })
 
-  constructor(private taskStore: TaskStoreService, private fb: FormBuilder) { }
-  tasks = this.taskStore.getTasks();
+  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder) { }
 
   onSubmit() {
-    console.log(this.addTaskForm.value);
   }
 
   ngOnInit(): void {

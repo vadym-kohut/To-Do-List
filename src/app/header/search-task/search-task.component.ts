@@ -15,6 +15,7 @@ export class SearchTaskComponent implements OnInit {
   constructor(private queryService: SearchQueryServiceService) { }
 
   ngOnInit(): void {
-    this.taskSearch.valueChanges.pipe(debounceTime(500)).subscribe(query => this.queryService.setQuery(query));
+    this.taskSearch.valueChanges.pipe(debounceTime(500))
+      .subscribe(query => this.queryService.setQuery(query));
   }
 }
