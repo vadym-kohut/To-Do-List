@@ -22,6 +22,10 @@ export class ProjectComponent implements OnInit {
 
   constructor(private router: Router, private projectStore: ProjectStoreService) { }
 
+  setProjectToShow(id: number) {
+    this.projectStore.setProjectToShow(id);
+  }
+
   ngOnInit(): void {
   }
 

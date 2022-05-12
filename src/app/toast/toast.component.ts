@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ToastService } from '../toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
-  constructor() { }
+  toastData$!: Observable<string | null>;
+
+  constructor(private toastService: ToastService) { }
+
+  hideToast() {
+    this.toastService.hideToast();
+  }
 
   ngOnInit(): void {
+    this.toastData$ = this.toastService.getToastData$();
   }
 
 }

@@ -16,7 +16,6 @@ export class TaskAddFormComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('id: ', Number(this.route.snapshot.paramMap.get('id')));
   }
 
 }

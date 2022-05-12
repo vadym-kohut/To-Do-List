@@ -30,8 +30,15 @@
   </div>
 
   <div class="input-group mb-2">
+    <span class="input-group-text" id="addon-wrapping">Project</span>
+    <select formControlName="project" class="form-select" aria-label="Task project" name="taskProject">
+      <option *ngFor="let project of projects | async" [value]="project.id">{{project.title}}</option>
+    </select>
+  </div>
+
+  <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Priority</span>
-    <select formControlName="priority" class="form-select" aria-label="Default select example" name="taskPriority">
+    <select formControlName="priority" class="form-select" aria-label="Task priority" name="taskPriority">
       <option [value]="priorities.High">High</option>
       <option [value]="priorities.Medium">Medium</option>
       <option [value]="priorities.Low">Low</option>
