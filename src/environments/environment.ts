@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  crudEndpoint: 'b2b2e344f4a0409fad4314db746da3cd'
+  crudEndpoint: '23aff86a70d04a53a5f7453b5bfd5a47'
 };
 
 /*
