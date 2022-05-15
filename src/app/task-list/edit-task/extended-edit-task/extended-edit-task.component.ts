@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
+import { Priority } from 'src/app/task-add-form/priority';
 import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 
 @Component({
@@ -10,13 +12,18 @@ import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 })
 export class ExtendedEditTaskComponent implements OnInit {
 
-  addTaskForm = this.fb.group({
+  editTaskForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
     description: ['', Validators.minLength(5)],
-    priority: ['']
+    project: [''],
+    priority: Priority
   })
 
-  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder) { }
+  constructor(
+    private taskStore: TaskStoreLocalService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute
+  ) { }
 
   onSubmit() {
   }
@@ -24,7 +31,7 @@ export class ExtendedEditTaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get title() { return this.addTaskForm.get('title') }
-  get description() { return this.addTaskForm.get('description') }
+  get title() { return this.editTaskForm.get('title') }
+  get description() { return this.editTaskForm.get('description') }
 
 }

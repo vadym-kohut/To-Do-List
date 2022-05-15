@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   taskCountByPriority$!: Observable<{ High: number, Medium: number, Low: number }>;
   selectedProjectName$!: Observable<null | string>;
 
-  constructor(private taskStore: TaskStoreRemoteService, private projectStore: ProjectStoreService) { }
+  constructor(private taskStore: TaskStoreLocalService, private projectStore: ProjectStoreService) { }
 
   clearProjectFilter() {
     this.projectStore.clearProjectFilter();

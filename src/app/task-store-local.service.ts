@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task-list/task';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, map, Observable } from 'rxjs';
 import { Priority } from './task-add-form/priority';
 import { SearchQueryServiceService } from './search-query-service.service';
 import { ProjectStoreService } from './project-store.service';
@@ -45,6 +45,8 @@ export class TaskStoreLocalService implements TaskStore {
       id: 4
     }
   ]);
+
+  taskIdToEdit!: number;
 
   constructor(private queryService: SearchQueryServiceService, private projectStore: ProjectStoreService) { }
 
@@ -98,6 +100,10 @@ export class TaskStoreLocalService implements TaskStore {
         }
       })
     );
+  }
+
+  getTaskToEdit(): Task {
+    return this.tasks$.getValue().filter(task => task.id == this.taskIdToEdit)[0];
   }
 
 }
