@@ -1,9 +1,7 @@
 <div class="flex-shrink-0 p-3 bg-primary bg-gradient bg-opacity-50 sidebar">
   <a routerLink="/"
     class="d-flex align-items-center justify-content-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-    <svg class="bi me-2" width="30" height="24">
-      <use xlink:href="#bootstrap" />
-    </svg>
+    <img src="../../assets/task.png" class="site-logo">
     <span class="fs-5 fw-semibold">ToDo</span>
   </a>
   <ul class="list-unstyled ps-0">
@@ -22,18 +20,7 @@
     </li>
     <li class="border-top my-3"></li>
     <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#account-collapse" aria-expanded="false">
-        Account
-      </button>
-      <div class="collapse" id="account-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a routerLink="" class="link-dark rounded">New...</a></li>
-          <li><a routerLink="" class="link-dark rounded">Profile</a></li>
-          <li><a routerLink="" class="link-dark rounded">Settings</a></li>
-          <li><a routerLink="" class="link-dark rounded">Sign out</a></li>
-        </ul>
-      </div>
+      <app-tags></app-tags>
     </li>
   </ul>
 </div>
