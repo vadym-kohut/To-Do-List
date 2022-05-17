@@ -6,6 +6,8 @@ import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { ProjectStoreService } from 'src/app/project-store.service';
 import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 import { TaskStoreRemoteService } from 'src/app/task-store-remote.service';
+import { TagStoreService } from 'src/app/tag-store.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-extended-add-form',
@@ -18,13 +20,21 @@ export class ExtendedAddFormComponent implements OnInit {
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
     description: ['', Validators.minLength(5)],
     project: [''],
-    priority: Priority
+    priority: Priority,
+    tags: []
   })
   priorities = Priority;
   projects = this.projectStore.getProjects$();
+  tagsDropdown: string[] = [];
+  dropdownSettings: IDropdownSettings = {};
 
-  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder, private router: Router,
-    private projectStore: ProjectStoreService) { }
+  constructor(
+    private taskStore: TaskStoreLocalService,
+    private fb: FormBuilder,
+    private router: Router,
+    private projectStore: ProjectStoreService,
+    private tagStore: TagStoreService
+  ) { }
 
 
   onSubmit() {
@@ -33,6 +43,17 @@ export class ExtendedAddFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tagStore.getTags$().subscribe(tags => this.tagsDropdown = tags);
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      textField: 'tag',
+      selectAllText: 'Select All Tags',
+      unSelectAllText: 'UnSelect All Tags',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
   }
 
   get title() { return this.addTaskForm.get('title')! }

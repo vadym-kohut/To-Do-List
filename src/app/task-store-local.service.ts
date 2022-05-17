@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task-list/task';
-import { BehaviorSubject, combineLatest, filter, map, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, map, Observable, tap } from 'rxjs';
 import { Priority } from './task-add-form/priority';
 import { SearchQueryServiceService } from './search-query-service.service';
 import { ProjectStoreService } from './project-store.service';
 import { TaskStore } from './task-store';
+import { TagStoreService } from './tag-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,34 +14,34 @@ export class TaskStoreLocalService implements TaskStore {
 
   private tasks$ = new BehaviorSubject<Task[]>([
     {
-      title: 'First task',
-      description: 'First description',
-      tags: ['tag1', 'tag2'],
-      priority: Priority.High,
+      title: 'Fix bug in How-To-Mix project',
+      description: 'Add to chosen is adding same ingredients from both ingredient list and ingredient search',
+      tags: ['Work', 'This week'],
+      priority: Priority.Medium,
       project: 1,
       id: 1
     },
     {
-      title: 'Second task',
-      description: 'Second description',
-      tags: ['tag3', 'tag4', 'tag5'],
-      priority: Priority.Medium,
+      title: 'Get mug',
+      description: 'Bring my own mug to the office',
+      tags: ['Work', 'Can wait'],
+      priority: Priority.Low,
       project: 2,
       id: 2
     },
     {
-      title: 'Third task',
-      description: 'Third description',
-      tags: ['tag3', 'tag4', 'tag5'],
-      priority: Priority.Medium,
+      title: 'To-Do-List feature',
+      description: 'Add tags to to-do-list and set tag filter',
+      tags: ['Work', 'This week', 'Urgent'],
+      priority: Priority.High,
       project: 2,
       id: 3
     },
     {
-      title: 'Fourth task',
-      description: 'Fourth description',
-      tags: [],
-      priority: Priority.Low,
+      title: 'New harness',
+      description: 'Buy Cookie new harness',
+      tags: ['Home', 'This month'],
+      priority: Priority.Medium,
       project: 4,
       id: 4
     }
@@ -48,21 +49,28 @@ export class TaskStoreLocalService implements TaskStore {
 
   taskIdToEdit!: number;
 
-  constructor(private queryService: SearchQueryServiceService, private projectStore: ProjectStoreService) { }
+  constructor(
+    private queryService: SearchQueryServiceService,
+    private projectStore: ProjectStoreService,
+    private tagStore: TagStoreService
+  ) { }
 
   getAllTasks$() {
     return this.tasks$.asObservable();
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getProjectToShow$()]).pipe(
-      map(([tasks, query, id]) => {
+    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getProjectToShow$(), this.tagStore.getChosenTags$()]).pipe(
+      map(([tasks, query, id, tags]) => {
         let filteredTasks = tasks;
         if (id) {
           filteredTasks = filteredTasks.filter(task => task.project == id);
         }
         if (query !== '') {
           filteredTasks = filteredTasks.filter(task => task.title.toLocaleLowerCase().startsWith(query.toLocaleLowerCase()));
+        }
+        if (tags.length !== 0) {
+          filteredTasks = filteredTasks.filter((task: Task) => tags.every((tag: string) => task.tags.includes(tag)));
         }
         return filteredTasks;
       })

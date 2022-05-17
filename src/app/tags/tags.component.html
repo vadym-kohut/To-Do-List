@@ -1,0 +1,7 @@
+<h4>Tags</h4>
+
+<button class="btn btn-sm m-1 btn-outline-light" *ngFor="let tag of tags$ | async" (click)="toggleChosenTag(tag)"
+  [ngClass]="{'btn-outline-dark': checkIfChosen(tag)}">{{tag}}</button><br>
+<button *ngIf="(chosenTags$ | async)?.length" (click)="clearChosenTags()"
+  class="btn btn-sm m-1 btn-outline-danger">Clear all
+  tags</button>

@@ -11,7 +11,10 @@ export class ProjectListComponent implements OnInit {
 
   projects$ = this.projectStore.getProjects$();
 
-  constructor(private router: Router, private projectStore: ProjectStoreService) { }
+  constructor(
+    private router: Router,
+    private projectStore: ProjectStoreService
+  ) { }
 
   deleteProject(id: number) {
     this.projectStore.deleteProject(id);

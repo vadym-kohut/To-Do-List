@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { TaskStoreLocalService } from 'src/app/task-store-local.service';
 import { Task } from '../../task';

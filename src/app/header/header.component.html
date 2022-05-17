@@ -1,10 +1,8 @@
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
     <a routerLink="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-      <span class="fs-4" *ngIf="!(selectedProjectName$ | async)">All tasks</span>
+      <img src="../../assets/task.png" class="site-logo">
+      <span class="fs-4 fw-bold" *ngIf="!(selectedProjectName$ | async)">All tasks</span>
       <ng-container *ngIf="selectedProjectName$ | async">
         <span class="fs-4">{{selectedProjectName$ | async}} tasks</span>
         <button class="btn btn-sm btn-outline-danger ms-2" (click)="clearProjectFilter()">X</button>
@@ -14,7 +12,7 @@
 
     <span class="fs-4">{{tasksCount$ | async}} tasks of {{allTasksCount$ | async}}</span>
 
-    <app-search-task></app-search-task>
+    <app-search-task class="ms-3"></app-search-task>
   </div>
 
   <div class="container d-flex flex-wrap justify-content-end">

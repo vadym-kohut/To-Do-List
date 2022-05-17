@@ -45,8 +45,12 @@
     </select>
   </div>
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button id="liveToastBtn" type="button" class="btn btn-outline-danger">Cancel</button>
+  <ng-multiselect-dropdown [settings]="dropdownSettings" placeholder="Tags" [data]="tagsDropdown"
+    formControlName="tags">
+  </ng-multiselect-dropdown>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+    <button id="liveToastBtn" type="button" class="btn btn-outline-danger" routerLink="/">Cancel</button>
     <button id="liveToastBtn" type="submit" class="btn btn-outline-success px-4"
       [disabled]="!addTaskForm.valid">Add</button>
   </div>

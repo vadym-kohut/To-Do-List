@@ -20,6 +20,9 @@ import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-t
 import { AddProjectComponent } from './project-list/add-project/add-project.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ToastComponent } from './toast/toast.component';
+import { TagsComponent } from './tags/tags.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -40,14 +43,17 @@ import { ToastComponent } from './toast/toast.component';
     ExtendedEditTaskComponent,
     AddProjectComponent,
     LoaderComponent,
-    ToastComponent
+    ToastComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
