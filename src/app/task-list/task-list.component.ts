@@ -20,8 +20,7 @@ export class TaskListComponent implements OnInit {
     private router: Router,
     private taskStore: TaskStoreLocalService,
     private loaderService: LoaderService,
-    private toastService: ToastService,
-    private tagStore: TagStoreService
+    private toastService: ToastService
   ) { }
 
   showLoader() {

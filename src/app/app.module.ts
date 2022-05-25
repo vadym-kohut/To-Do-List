@@ -23,6 +23,7 @@ import { ToastComponent } from './toast/toast.component';
 import { TagsComponent } from './tags/tags.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { EditProjectComponent } from './project-list/edit-project/edit-project.component';
 
 
 
@@ -44,7 +45,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AddProjectComponent,
     LoaderComponent,
     ToastComponent,
-    TagsComponent
+    TagsComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,

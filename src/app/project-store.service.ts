@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Project } from './project-list/project';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class ProjectStoreService {
 
   constructor(private router: Router) { }
 
-  getProjects$() {
+  getProjects$(): Observable<Project[]> {
     return this.workProjects$.asObservable();
   }
 
@@ -48,11 +48,28 @@ export class ProjectStoreService {
     this.projectToShow$.next(id);
   }
 
+  getProjectToShow$() {
+    return this.projectToShow$.asObservable();
+  }
+
   clearProjectFilter() {
     this.projectToShow$.next(null);
   }
 
-  getProjectToShow$() {
-    return this.projectToShow$.asObservable();
+  getProjectById(id: number): Project {
+    return this.workProjects$.getValue().filter((project: Project) => project.id == id)[0];
   }
+
+  updateProject(project: Project): void {
+    this.workProjects$.next(
+      this.workProjects$.getValue().map(p => {
+        if (project.id == p.id) {
+          return project;
+        } else {
+          return p;
+        }
+      })
+    )
+  }
+
 }
