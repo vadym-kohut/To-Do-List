@@ -14,7 +14,11 @@ export class AddProjectComponent implements OnInit {
     title: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private projectStore: ProjectStoreService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private projectStore: ProjectStoreService,
+    private router: Router
+  ) { }
 
   onSubmit() {
     this.projectStore.addProject(this.addProjectForm.value);

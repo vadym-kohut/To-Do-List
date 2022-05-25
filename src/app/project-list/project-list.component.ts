@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectStoreService } from '../project-store.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -24,7 +24,6 @@ export class ProjectListComponent implements OnInit {
     this.router.navigateByUrl('/add-project');
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

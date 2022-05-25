@@ -21,9 +21,7 @@ export class BasicEditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskToEdit = this.taskStore.getTaskToEdit();
-    console.log(this.taskToEdit);
     this.addTaskForm.controls['title'].setValue(this.taskToEdit.title);
-    console.log(this.taskStore.taskIdToEdit, this.taskToEdit.title);
   }
 
   get title() { return this.addTaskForm.get('title') }

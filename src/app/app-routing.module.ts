@@ -1,6 +1,7 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProjectComponent } from './project-list/add-project/add-project.component';
+import { EditProjectComponent } from './project-list/edit-project/edit-project.component';
 import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
 import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
 import { TaskAddFormComponent } from './task-add-form/task-add-form.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
     ]
   },
   { path: 'add-project', component: AddProjectComponent },
+  { path: 'edit-project/:id', component: EditProjectComponent },
   { path: '**', redirectTo: 'task-list' },
 ];
 

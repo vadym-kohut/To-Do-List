@@ -10,6 +10,7 @@ import { Priority } from 'src/app/task-add-form/priority';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
+
   @Input()
   task!: Task;
 
@@ -22,11 +23,11 @@ export class TaskComponent implements OnInit {
     this.deleteTask.emit(task);
   }
 
+  constructor(public router: Router) { }
+
   navToEditTask = (id: number) => {
     this.router.navigate(['edit-task', id]);
   }
-
-  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
