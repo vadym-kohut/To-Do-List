@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TagStoreService } from '../tag-store.service';
+import { TagStoreService } from '../services/tag-store.service';
 
 @Component({
   selector: 'app-tags',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoaderService } from '../loader.service';
-import { TagStoreService } from '../tag-store.service';
-import { TaskStoreLocalService } from '../task-store-local.service';
-import { TaskStoreRemoteService } from '../task-store-remote.service';
-import { ToastService } from '../toast.service';
+import { LoaderDataService } from '../services/loader-data.service';
+import { TagStoreService } from '../services/tag-store.service';
+import { TaskStoreLocalService } from '../services/task-store-local.service';
+import { TaskStoreRemoteService } from '../services/task-store-remote.service';
+import { ToastService } from '../services/toast.service';
 import { Task } from './task';
 
 @Component({
@@ -19,7 +19,7 @@ export class TaskListComponent implements OnInit {
   constructor(
     private router: Router,
     private taskStore: TaskStoreLocalService,
-    private loaderService: LoaderService,
+    private loaderService: LoaderDataService,
     private toastService: ToastService
   ) { }
 

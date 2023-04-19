@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { combineLatest, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ProjectStoreService } from './project-store.service';
-import { SearchQueryServiceService } from './search-query-service.service';
-import { Priority } from './task-add-form/priority';
-import { Task } from './task-list/task';
+import { ProjectDataService } from './project-data.service';
+import { SearchQueryDataService } from './search-query-data.service';
+import { Priority } from '../task-add-form/priority';
+import { Task } from '../task-list/task';
 import { TaskStore } from './task-store';
 
 @Injectable({
@@ -13,18 +13,18 @@ import { TaskStore } from './task-store';
 })
 export class TaskStoreRemoteService implements TaskStore {
 
-  constructor(private http: HttpClient, private queryService: SearchQueryServiceService, private projectStore: ProjectStoreService) { }
+  constructor(private http: HttpClient, private queryService: SearchQueryDataService, private projectStore: ProjectDataService) { }
 
   getAllTasks$(): Observable<Task[]> {
     return this.http.get<Task[]>(`https://crudcrud.com/api/${environment.crudEndpoint}/tasks`);
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getProjectToShow$()]).pipe(
-      map(([tasks, query, id]) => {
+    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getSelectedProject$()]).pipe(
+      map(([tasks, query, selectedProject]) => {
         let filteredTasks = tasks;
-        if (id) {
-          filteredTasks = filteredTasks.filter(task => task.project == id);
+        if (selectedProject) {
+          filteredTasks = filteredTasks.filter(task => task.project == selectedProject!.id);
         }
         if (query !== '') {
           filteredTasks = filteredTasks.filter(task => task.title.toLocaleLowerCase().startsWith(query.toLocaleLowerCase()));

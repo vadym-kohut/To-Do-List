@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { Priority } from 'src/app/task-add-form/priority';
-import { TaskStoreLocalService } from 'src/app/task-store-local.service';
+import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
 
 @Component({
   selector: 'app-extended-edit-task',

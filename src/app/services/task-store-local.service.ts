@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Task } from './task-list/task';
+import { Task } from '../task-list/task';
 import { BehaviorSubject, combineLatest, filter, map, Observable, tap } from 'rxjs';
-import { Priority } from './task-add-form/priority';
-import { SearchQueryServiceService } from './search-query-service.service';
-import { ProjectStoreService } from './project-store.service';
+import { Priority } from '../task-add-form/priority';
+import { SearchQueryDataService } from './search-query-data.service';
+import { ProjectDataService } from './project-data.service';
 import { TaskStore } from './task-store';
 import { TagStoreService } from './tag-store.service';
 
@@ -50,8 +50,8 @@ export class TaskStoreLocalService implements TaskStore {
   taskIdToEdit!: number;
 
   constructor(
-    private queryService: SearchQueryServiceService,
-    private projectStore: ProjectStoreService,
+    private queryService: SearchQueryDataService,
+    private projectStore: ProjectDataService,
     private tagStore: TagStoreService
   ) { }
 
@@ -60,11 +60,11 @@ export class TaskStoreLocalService implements TaskStore {
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getProjectToShow$(), this.tagStore.getChosenTags$()]).pipe(
-      map(([tasks, query, id, tags]) => {
+    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getSelectedProject$(), this.tagStore.getChosenTags$()]).pipe(
+      map(([tasks, query, selectedProject, tags]) => {
         let filteredTasks = tasks;
-        if (id) {
-          filteredTasks = filteredTasks.filter(task => task.project == id);
+        if (selectedProject) {
+          filteredTasks = filteredTasks.filter(task => task.project == selectedProject!.id);
         }
         if (query !== '') {
           filteredTasks = filteredTasks.filter(task => task.title.toLocaleLowerCase().startsWith(query.toLocaleLowerCase()));

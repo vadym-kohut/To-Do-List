@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from "rxjs";
-import { Task } from "./task-list/task";
+import { Task } from "../task-list/task";
 
 export interface TaskStore {
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TaskStoreLocalService } from 'src/app/task-store-local.service';
+import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
 
 @Component({
   selector: 'app-edit-task',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectStoreService } from 'src/app/project-store.service';
-import { Project } from '../project';
+import { ProjectDataService } from 'src/app/services/project-data.service';
+import { Project } from '../../interfaces/project';
 
 @Component({
   selector: 'app-edit-project',
@@ -19,7 +19,7 @@ export class EditProjectComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private projectStore: ProjectStoreService,
+    private projectStore: ProjectDataService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -27,7 +27,6 @@ export class EditProjectComponent implements OnInit {
   onSubmit() {
     this.router.navigateByUrl('/');
     this.project.title = this.editProjectForm.value.title;
-    this.projectStore.updateProject(this.project);
   }
 
   ngOnInit(): void {

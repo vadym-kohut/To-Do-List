@@ -1,5 +1,5 @@
 <li (mouseover)="showProjectBtns = true" (mouseleave)="showProjectBtns = false">
-  <a (click)="setProjectToShow(project.id)" class="link-dark rounded">{{project.title}}</a>
+  <a (click)="setSelectedProject(project)" class="link-dark rounded">{{project.title}}</a>
 
   <button *ngIf="showProjectBtns" (click)="removeProject(project.id)"
     class="btn btn-outline-danger btn-sm py-0 ms-1">X</button>

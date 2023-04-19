@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from '../loader.service';
+import { LoaderDataService } from '../services/loader-data.service';
 
 @Component({
   selector: 'app-loader',
@@ -8,9 +8,9 @@ import { LoaderService } from '../loader.service';
 })
 export class LoaderComponent implements OnInit {
 
-  loaderShown$ = this.loaderService.getLoaderShown();
+  loaderShown$ = this.loaderService.getIsLoaderShown$();
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private loaderService: LoaderDataService) { }
 
   hideLoader() {
     this.loaderService.hideLoader();

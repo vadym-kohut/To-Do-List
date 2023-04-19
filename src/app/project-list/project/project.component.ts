@@ -1,7 +1,7 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectStoreService } from 'src/app/project-store.service';
-import { Project } from '../project';
+import { ProjectDataService } from 'src/app/services/project-data.service';
+import { Project } from '../../interfaces/project';
 
 @Component({
   selector: 'app-project',
@@ -23,12 +23,12 @@ export class ProjectComponent implements OnInit {
   showProjectBtns: boolean = false;
 
   constructor(
-    private projectStore: ProjectStoreService,
+    private projectStore: ProjectDataService,
     public router: Router
   ) { }
 
-  setProjectToShow(id: number) {
-    this.projectStore.setProjectToShow(id);
+  setSelectedProject(project: Project) {
+    this.projectStore.setSelectedProject(project);
   }
 
   navToEditProject(id: number) {

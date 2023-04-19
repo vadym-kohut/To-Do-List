@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { Router } from '@angular/router';
-import { TaskStoreLocalService } from 'src/app/task-store-local.service';
-import { TaskStoreRemoteService } from 'src/app/task-store-remote.service';
+import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
+import { TaskStoreRemoteService } from 'src/app/services/task-store-remote.service';
 
 @Component({
   selector: 'app-basic-add-form',

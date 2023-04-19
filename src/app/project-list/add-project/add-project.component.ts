@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProjectStoreService } from 'src/app/project-store.service';
+import { ProjectDataService } from 'src/app/services/project-data.service';
 
 @Component({
   selector: 'app-add-project',
@@ -16,7 +16,7 @@ export class AddProjectComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private projectStore: ProjectStoreService,
+    private projectStore: ProjectDataService,
     private router: Router
   ) { }
 

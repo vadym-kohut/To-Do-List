@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectStoreService } from '../project-store.service';
+import { ProjectDataService } from '../services/project-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,15 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjectListComponent implements OnInit {
 
-  projects$ = this.projectStore.getProjects$();
+  projects$ = this.projectStore.getWorkProjectList$();
 
   constructor(
     private router: Router,
-    private projectStore: ProjectStoreService
+    private projectStore: ProjectDataService
   ) { }
 
   deleteProject(id: number) {
-    this.projectStore.deleteProject(id);
+    this.projectStore.removeProject(id);
   }
 
   navToAddProj() {

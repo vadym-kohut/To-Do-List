@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
-import { TaskStoreLocalService } from 'src/app/task-store-local.service';
+import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
 import { Task } from '../../task';
 
 @Component({

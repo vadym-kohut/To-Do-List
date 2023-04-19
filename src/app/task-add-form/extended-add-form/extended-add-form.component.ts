@@ -3,10 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Priority } from '../priority';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
-import { ProjectStoreService } from 'src/app/project-store.service';
-import { TaskStoreLocalService } from 'src/app/task-store-local.service';
-import { TaskStoreRemoteService } from 'src/app/task-store-remote.service';
-import { TagStoreService } from 'src/app/tag-store.service';
+import { ProjectDataService } from 'src/app/services/project-data.service';
+import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
+import { TaskStoreRemoteService } from 'src/app/services/task-store-remote.service';
+import { TagStoreService } from 'src/app/services/tag-store.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
@@ -24,7 +24,7 @@ export class ExtendedAddFormComponent implements OnInit {
     tags: []
   })
   priorities = Priority;
-  projects = this.projectStore.getProjects$();
+  projects = this.projectStore.getWorkProjectList$();
   tagsDropdown: string[] = [];
   dropdownSettings: IDropdownSettings = {};
 
@@ -32,7 +32,7 @@ export class ExtendedAddFormComponent implements OnInit {
     private taskStore: TaskStoreLocalService,
     private fb: FormBuilder,
     private router: Router,
-    private projectStore: ProjectStoreService,
+    private projectStore: ProjectDataService,
     private tagStore: TagStoreService
   ) { }
 
