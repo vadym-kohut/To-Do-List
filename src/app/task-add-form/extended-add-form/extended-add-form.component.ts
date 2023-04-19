@@ -6,8 +6,9 @@ import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
 import { TaskStoreRemoteService } from 'src/app/services/task-store-remote.service';
-import { TagStoreService } from 'src/app/services/tag-store.service';
+import { TagDataService } from 'src/app/services/tag-data.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import {Tag} from "../../interfaces/tag";
 
 @Component({
   selector: 'app-extended-add-form',
@@ -25,7 +26,7 @@ export class ExtendedAddFormComponent implements OnInit {
   })
   priorities = Priority;
   projects = this.projectStore.getWorkProjectList$();
-  tagsDropdown: string[] = [];
+  tagsDropdown: Tag[] = [];
   dropdownSettings: IDropdownSettings = {};
 
   constructor(
@@ -33,7 +34,7 @@ export class ExtendedAddFormComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private projectStore: ProjectDataService,
-    private tagStore: TagStoreService
+    private tagStore: TagDataService
   ) { }
 
 
@@ -43,7 +44,7 @@ export class ExtendedAddFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tagStore.getTags$().subscribe(tags => this.tagsDropdown = tags);
+    this.tagStore.getTagList$().subscribe(tags => this.tagsDropdown = tags);
 
     this.dropdownSettings = {
       singleSelection: false,

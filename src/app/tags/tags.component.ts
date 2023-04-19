@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TagStoreService } from '../services/tag-store.service';
+import { TagDataService } from '../services/tag-data.service';
+import {Tag} from "../interfaces/tag";
 
 @Component({
   selector: 'app-tags',
@@ -9,30 +10,30 @@ import { TagStoreService } from '../services/tag-store.service';
 })
 export class TagsComponent implements OnInit {
 
-  tags$ = new Observable<string[]>();
-  chosenTags$ = new Observable<string[]>();
+  tags$ = new Observable<Tag[]>();
+  selectedTagList = new Observable<Tag[]>();
 
-  constructor(private tagStore: TagStoreService) { }
+  constructor(private tagStore: TagDataService) { }
 
   ngOnInit(): void {
-    this.tags$ = this.tagStore.getTags$();
-    this.chosenTags$ = this.tagStore.getChosenTags$();
+    this.tags$ = this.tagStore.getTagList$();
+    this.selectedTagList = this.tagStore.getSelectedTagList$();
   }
 
-  checkIfChosen(tag: string): boolean {
-    return this.tagStore.checkIfChosen(tag);
+  checkIfSelected(tag: Tag): boolean {
+    return this.tagStore.isTagIncludedInSelectedTagList(tag);
   }
 
-  toggleChosenTag(chosenTag: string): void {
-    if (!this.checkIfChosen(chosenTag)) {
-      this.tagStore.addChosenTag(chosenTag);
+  toggleChosenTag(selectedTag: Tag): void {
+    if (!this.checkIfSelected(selectedTag)) {
+      this.tagStore.addSelectedTag(selectedTag);
     } else {
-      this.tagStore.clearChosenTag(chosenTag);
+      this.tagStore.removeSelectedTag(selectedTag);
     }
   }
 
   clearChosenTags() {
-    this.tagStore.clearChosenTags();
+    this.tagStore.clearSelectedTagList();
   }
 
 }

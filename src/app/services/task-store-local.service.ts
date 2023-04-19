@@ -5,7 +5,8 @@ import { Priority } from '../task-add-form/priority';
 import { SearchQueryDataService } from './search-query-data.service';
 import { ProjectDataService } from './project-data.service';
 import { TaskStore } from './task-store';
-import { TagStoreService } from './tag-store.service';
+import { TagDataService } from './tag-data.service';
+import {Tag} from "../interfaces/tag";
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +53,7 @@ export class TaskStoreLocalService implements TaskStore {
   constructor(
     private queryService: SearchQueryDataService,
     private projectStore: ProjectDataService,
-    private tagStore: TagStoreService
+    private tagStore: TagDataService
   ) { }
 
   getAllTasks$() {
@@ -60,7 +61,7 @@ export class TaskStoreLocalService implements TaskStore {
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getSelectedProject$(), this.tagStore.getChosenTags$()]).pipe(
+    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getSelectedProject$(), this.tagStore.getSelectedTagList$()]).pipe(
       map(([tasks, query, selectedProject, tags]) => {
         let filteredTasks = tasks;
         if (selectedProject) {
@@ -70,7 +71,7 @@ export class TaskStoreLocalService implements TaskStore {
           filteredTasks = filteredTasks.filter(task => task.title.toLocaleLowerCase().startsWith(query.toLocaleLowerCase()));
         }
         if (tags.length !== 0) {
-          filteredTasks = filteredTasks.filter((task: Task) => tags.every((tag: string) => task.tags.includes(tag)));
+          filteredTasks = filteredTasks.filter((task: Task) => tags.every((tag: Tag) => task.tags.includes(tag.tagName)));
         }
         return filteredTasks;
       })
