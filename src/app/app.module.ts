@@ -13,7 +13,7 @@ import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-
 import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchTaskComponent } from './header/search-task/search-task.component';
+import { SearchBarComponent } from './header/search-bar/search-task.component';
 import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
 import { BasicEditTaskComponent } from './task-list/edit-task/basic-edit-task/basic-edit-task.component';
 import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-task/extended-edit-task.component';
@@ -38,7 +38,7 @@ import { EditProjectComponent } from './project-list/edit-project/edit-project.c
     ProjectComponent,
     BasicAddFormComponent,
     ExtendedAddFormComponent,
-    SearchTaskComponent,
+    SearchBarComponent,
     EditTaskComponent,
     BasicEditTaskComponent,
     ExtendedEditTaskComponent,

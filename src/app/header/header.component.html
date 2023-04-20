@@ -1,7 +1,7 @@
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
     <a routerLink="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-      <img src="../../assets/task.png" class="site-logo">
+      <img src="../../assets/task.png" class="site-logo" alt="page logo">
       <span class="fs-4 fw-bold" *ngIf="!(selectedProjectName$ | async)">All tasks</span>
       <ng-container *ngIf="selectedProjectName$ | async">
         <span class="fs-4">{{selectedProjectName$ | async}} tasks</span>
@@ -12,7 +12,7 @@
 
     <span class="fs-4">{{tasksCount$ | async}} tasks of {{allTasksCount$ | async}}</span>
 
-    <app-search-task class="ms-3"></app-search-task>
+    <app-search-bar class="ms-3"></app-search-bar>
   </div>
 
   <div class="container d-flex flex-wrap justify-content-end">
