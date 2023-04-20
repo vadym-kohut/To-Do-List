@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoaderDataService } from '../services/loader-data.service';
-import { TagDataService } from '../services/tag-data.service';
-import { TaskStoreLocalService } from '../services/task-store-local.service';
-import { TaskStoreRemoteService } from '../services/task-store-remote.service';
 import { ToastDataService } from '../services/toast-data.service';
-import { Task } from './task';
+import { Task } from '../shared/task';
+import {TaskDataService} from "../services/task-data.service";
 
 @Component({
   selector: 'app-task-list',
@@ -18,7 +16,7 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private taskStore: TaskStoreLocalService,
+    private taskData: TaskDataService,
     private loaderService: LoaderDataService,
     private toastService: ToastDataService
   ) { }
@@ -36,11 +34,11 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tasks$ = this.taskStore.getTasksBySearch$();
+    this.tasks$ = this.taskData.getTasksBySearch$();
   }
 
   deleteTask(task: Task) {
-    this.taskStore.deleteTask(task);
+    this.taskData.removeTask(task);
   }
 
 }

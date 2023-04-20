@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Task } from '../task';
+import { Task } from '../../shared/task';
 import { Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Priority } from 'src/app/task-add-form/priority';
+import { Priority } from 'src/app/shared/priority';
 
 @Component({
   selector: 'app-task',

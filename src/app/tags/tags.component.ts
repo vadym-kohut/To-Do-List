@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TagDataService } from '../services/tag-data.service';
-import {Tag} from "../interfaces/tag";
+import {Tag} from "../shared/tag";
 
 @Component({
   selector: 'app-tags',

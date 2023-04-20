@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { Router } from '@angular/router';
-import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
-import { TaskStoreRemoteService } from 'src/app/services/task-store-remote.service';
+import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
   selector: 'app-basic-add-form',
@@ -16,10 +15,13 @@ export class BasicAddFormComponent implements OnInit {
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
   })
 
-  constructor(private taskStore: TaskStoreLocalService, private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private taskData: TaskDataService,
+    private fb: FormBuilder, private router: Router
+  ) { }
 
   onSubmit() {
-    this.taskStore.addTask(this.addTaskForm.value);
+    this.taskData.addTask(this.addTaskForm.value);
     this.router.navigateByUrl('/');
   }
 

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Tag} from "../interfaces/tag";
+import {Tag} from "../shared/tag";
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +52,7 @@ export class TagDataService {
     );
   }
 
-  clearSelectedTagList(): void {
+  clearSelectedTagList() {
     this.selectedTagList$.next([]);
   }
 

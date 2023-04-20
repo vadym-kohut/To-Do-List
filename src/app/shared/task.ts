@@ -1,4 +1,4 @@
-import { Priority } from "../task-add-form/priority";
+import { Priority } from "./priority";
 
 export interface Task {
     _id?: string;

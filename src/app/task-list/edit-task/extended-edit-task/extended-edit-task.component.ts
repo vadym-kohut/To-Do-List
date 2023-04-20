@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
-import { Priority } from 'src/app/task-add-form/priority';
-import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
+import { Priority } from 'src/app/shared/priority';
+import {TaskDataService} from "../../../services/task-data.service";
 
 @Component({
   selector: 'app-extended-edit-task',
@@ -20,7 +20,7 @@ export class ExtendedEditTaskComponent implements OnInit {
   })
 
   constructor(
-    private taskStore: TaskStoreLocalService,
+    private taskData: TaskDataService,
     private fb: FormBuilder,
     private route: ActivatedRoute
   ) { }

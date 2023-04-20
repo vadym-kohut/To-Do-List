@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
+import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
   selector: 'app-edit-task',
@@ -10,10 +10,10 @@ import { TaskStoreLocalService } from 'src/app/services/task-store-local.service
 export class EditTaskComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-    private taskStore: TaskStoreLocalService) { }
+    private taskData: TaskDataService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.taskStore.taskIdToEdit = params['id']);
+    this.route.params.subscribe(params => this.taskData.taskIdToEdit = params['id']);
   }
 
 }

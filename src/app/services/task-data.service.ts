@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Task } from '../task-list/task';
-import { BehaviorSubject, combineLatest, filter, map, Observable, tap } from 'rxjs';
-import { Priority } from '../task-add-form/priority';
-import { SearchQueryDataService } from './search-query-data.service';
-import { ProjectDataService } from './project-data.service';
-import { TaskStore } from './task-store';
-import { TagDataService } from './tag-data.service';
-import {Tag} from "../interfaces/tag";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, combineLatest, map, Observable} from "rxjs";
+import {Task} from "../shared/task";
+import {Priority} from "../shared/priority";
+import {Tag} from "../shared/tag";
+import {SearchQueryDataService} from "./search-query-data.service";
+import {ProjectDataService} from "./project-data.service";
+import {TagDataService} from "./tag-data.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskStoreLocalService implements TaskStore {
+export class TaskDataService {
 
-  private tasks$ = new BehaviorSubject<Task[]>([
+  private taskList$ = new BehaviorSubject<Task[]>([
     {
       title: 'Fix bug in How-To-Mix project',
       description: 'Add to chosen is adding same ingredients from both ingredient list and ingredient search',
@@ -51,17 +50,18 @@ export class TaskStoreLocalService implements TaskStore {
   taskIdToEdit!: number;
 
   constructor(
-    private queryService: SearchQueryDataService,
-    private projectStore: ProjectDataService,
-    private tagStore: TagDataService
-  ) { }
+    private searchQueryData: SearchQueryDataService,
+    private projectData: ProjectDataService,
+    private tagData: TagDataService
+  ) {
+  }
 
-  getAllTasks$() {
-    return this.tasks$.asObservable();
+  getTaskList$(): Observable<Task[]> {
+    return this.taskList$.asObservable();
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getAllTasks$(), this.queryService.getQuery$(), this.projectStore.getSelectedProject$(), this.tagStore.getSelectedTagList$()]).pipe(
+    return combineLatest([this.getTaskList$(), this.searchQueryData.getQuery$(), this.projectData.getSelectedProject$(), this.tagData.getSelectedTagList$()]).pipe(
       map(([tasks, query, selectedProject, tags]) => {
         let filteredTasks = tasks;
         if (selectedProject) {
@@ -78,24 +78,24 @@ export class TaskStoreLocalService implements TaskStore {
     );
   }
 
-  addTask(task: Task) {
-    task.id = this.tasks$.getValue().length + 1;
-    this.tasks$.next([...this.tasks$.getValue(), task]);
+  addTask(newTask: Task) {
+    newTask.id = this.taskList$.getValue().length + 1;
+    this.taskList$.next([...this.taskList$.getValue(), newTask]);
   }
 
-  deleteTask(taskToDelete: Task) {
-    this.tasks$.next(this.tasks$.getValue().filter((task) => task.id !== taskToDelete.id));
+  removeTask(taskToRemove: Task) {
+    this.taskList$.next(this.taskList$.getValue().filter((task) => task.id !== taskToRemove.id));
   }
 
   getTaskCount$(): Observable<number> {
-    return this.getTasksBySearch$().pipe(
+    return this.getTaskList$().pipe(
       map((tasks: Task[]) => tasks.length)
     );
   }
 
-  getAllTaskCount$(): Observable<number> {
-    return this.getAllTasks$().pipe(
-      map((tasks: Task[]) => tasks.length)
+  getFilteredTaskCount$(): Observable<number> {
+    return this.getTasksBySearch$().pipe(
+      map((taskList: Task[]) => taskList.length)
     );
   }
 
@@ -112,7 +112,6 @@ export class TaskStoreLocalService implements TaskStore {
   }
 
   getTaskToEdit(): Task {
-    return this.tasks$.getValue().filter(task => task.id == this.taskIdToEdit)[0];
+    return this.taskList$.getValue().filter(task => task.id === this.taskIdToEdit)[0];
   }
-
 }

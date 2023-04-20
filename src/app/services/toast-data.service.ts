@@ -11,15 +11,15 @@ export class ToastDataService {
   constructor() {
   }
 
+  getToastData$(): Observable<string | null> {
+    return this.toastData$.asObservable();
+  }
+
   showToast(toastMessage: string) {
     this.toastData$.next(toastMessage);
   }
 
   hideToast() {
     this.toastData$.next(null);
-  }
-
-  getToastData$(): Observable<string | null> {
-    return this.toastData$.asObservable();
   }
 }

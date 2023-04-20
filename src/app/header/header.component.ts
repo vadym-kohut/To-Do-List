@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable } from 'rxjs';
 import { ProjectDataService } from '../services/project-data.service';
-import { TaskStoreLocalService } from '../services/task-store-local.service';
-import { TaskStoreRemoteService } from '../services/task-store-remote.service';
+import {TaskDataService} from "../services/task-data.service";
 
 @Component({
   selector: 'app-header',
@@ -16,16 +15,19 @@ export class HeaderComponent implements OnInit {
   taskCountByPriority$!: Observable<{ High: number, Medium: number, Low: number }>;
   selectedProjectName$!: Observable<null | string>;
 
-  constructor(private taskStore: TaskStoreLocalService, private projectStore: ProjectDataService) { }
+  constructor(
+    private taskData: TaskDataService,
+    private projectStore: ProjectDataService
+  ) { }
 
   clearProjectFilter() {
     this.projectStore.clearSelectedProject();
   }
 
   ngOnInit(): void {
-    this.tasksCount$ = this.taskStore.getTaskCount$();
-    this.allTasksCount$ = this.taskStore.getAllTaskCount$();
-    this.taskCountByPriority$ = this.taskStore.getTaskCountByPriority$();
+    this.tasksCount$ = this.taskData.getTaskCount$();
+    this.allTasksCount$ = this.taskData.getTaskCount$();
+    this.taskCountByPriority$ = this.taskData.getTaskCountByPriority$();
     this.selectedProjectName$ = combineLatest([this.projectStore.getWorkProjectList$(), this.projectStore.getSelectedProject$()]).pipe(
       map(([projects, selectedProject]) => {
         const filterArr = projects.filter((project) => project === selectedProject);

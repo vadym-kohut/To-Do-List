@@ -1,7 +1,7 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectDataService } from 'src/app/services/project-data.service';
-import { Project } from '../../interfaces/project';
+import { Project } from '../../shared/project';
 
 @Component({
   selector: 'app-project',

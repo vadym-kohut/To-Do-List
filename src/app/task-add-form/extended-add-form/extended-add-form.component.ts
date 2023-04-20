@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Priority } from '../priority';
+import { Priority } from '../../shared/priority';
 import { taskTitleValidator } from 'src/app/shared/task-title.validator';
 import { ProjectDataService } from 'src/app/services/project-data.service';
-import { TaskStoreLocalService } from 'src/app/services/task-store-local.service';
-import { TaskStoreRemoteService } from 'src/app/services/task-store-remote.service';
 import { TagDataService } from 'src/app/services/tag-data.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import {Tag} from "../../interfaces/tag";
+import {Tag} from "../../shared/tag";
+import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
   selector: 'app-extended-add-form',
@@ -30,7 +29,7 @@ export class ExtendedAddFormComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
 
   constructor(
-    private taskStore: TaskStoreLocalService,
+    private taskData: TaskDataService,
     private fb: FormBuilder,
     private router: Router,
     private projectStore: ProjectDataService,
@@ -39,7 +38,7 @@ export class ExtendedAddFormComponent implements OnInit {
 
 
   onSubmit() {
-    this.taskStore.addTask({ ...this.addTaskForm.value, priority: +this.addTaskForm.value.priority });
+    this.taskData.addTask({ ...this.addTaskForm.value, priority: +this.addTaskForm.value.priority });
     this.router.navigateByUrl('/');
   }
 
