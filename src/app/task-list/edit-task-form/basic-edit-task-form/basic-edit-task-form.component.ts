@@ -5,11 +5,11 @@ import {Task} from '../../../shared/task';
 import {TaskDataService} from "../../../services/task-data.service";
 
 @Component({
-  selector: 'app-basic-edit-task',
-  templateUrl: './basic-edit-task.component.html',
-  styleUrls: ['./basic-edit-task.component.scss']
+  selector: 'app-basic-edit-task-form',
+  templateUrl: './basic-edit-task-form.component.html',
+  styleUrls: ['./basic-edit-task-form.component.scss']
 })
-export class BasicEditTaskComponent implements OnInit {
+export class BasicEditTaskFormComponent implements OnInit {
 
   taskToEdit!: Task;
 

@@ -1,4 +1,4 @@
-<form [formGroup]="addTaskForm">
+<form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Title</span>
@@ -19,8 +19,9 @@
   </div>
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button id="liveToastBtn" type="button" class="btn btn-outline-danger">Cancel</button>
-    <button id="liveToastBtn" type="submit" class="btn btn-outline-success px-4">Add</button>
+    <button type="button" class="btn btn-outline-danger" routerLink="/">Cancel</button>
+    <button type="submit" class="btn btn-outline-success px-4"
+      [disabled]="!addTaskForm.valid">Add</button>
   </div>
 
 </form>

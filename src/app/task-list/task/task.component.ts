@@ -26,7 +26,7 @@ export class TaskComponent implements OnInit {
   constructor(public router: Router) { }
 
   navToEditTask = (id: number) => {
-    this.router.navigate(['edit-task', id]);
+    this.router.navigate(['edit-task-form', id]);
   }
 
   ngOnInit(): void {

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
-  selector: 'app-basic-add-form',
-  templateUrl: './basic-add-form.component.html',
-  styleUrls: ['./basic-add-form.component.scss']
+  selector: 'app-basic-task-add-form',
+  templateUrl: './basic-task-add-form.component.html',
+  styleUrls: ['./basic-task-add-form.component.scss']
 })
-export class BasicAddFormComponent implements OnInit {
+export class BasicTaskAddFormComponent implements OnInit {
 
   addTaskForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],

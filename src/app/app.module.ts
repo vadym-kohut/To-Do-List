@@ -9,14 +9,14 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskAddFormComponent } from './task-add-form/task-add-form.component';
 import { TaskComponent } from './task-list/task/task.component';
 import { ProjectComponent } from './project-list/project/project.component';
-import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
-import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
+import { BasicTaskAddFormComponent } from './task-add-form/basic-task-add-form/basic-task-add-form.component';
+import { ExtendedTaskAddFormComponent } from './task-add-form/extended-task-add-form/extended-task-add-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchBarComponent } from './header/search-bar/search-task.component';
-import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
-import { BasicEditTaskComponent } from './task-list/edit-task/basic-edit-task/basic-edit-task.component';
-import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-task/extended-edit-task.component';
+import { SearchBarComponent } from './header/search-bar/search-bar.component';
+import { EditTaskFormComponent } from './task-list/edit-task-form/edit-task-form.component';
+import { BasicEditTaskFormComponent } from './task-list/edit-task-form/basic-edit-task-form/basic-edit-task-form.component';
+import { ExtendedEditTaskFormComponent } from './task-list/edit-task-form/extended-edit-task-form/extended-edit-task-form.component';
 import { AddProjectComponent } from './project-list/add-project/add-project.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ToastComponent } from './toast/toast.component';
@@ -36,12 +36,12 @@ import { EditProjectComponent } from './project-list/edit-project/edit-project.c
     TaskAddFormComponent,
     TaskComponent,
     ProjectComponent,
-    BasicAddFormComponent,
-    ExtendedAddFormComponent,
+    BasicTaskAddFormComponent,
+    ExtendedTaskAddFormComponent,
     SearchBarComponent,
-    EditTaskComponent,
-    BasicEditTaskComponent,
-    ExtendedEditTaskComponent,
+    EditTaskFormComponent,
+    BasicEditTaskFormComponent,
+    ExtendedEditTaskFormComponent,
     AddProjectComponent,
     LoaderComponent,
     ToastComponent,

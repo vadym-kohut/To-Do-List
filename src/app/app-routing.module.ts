@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProjectComponent } from './project-list/add-project/add-project.component';
 import { EditProjectComponent } from './project-list/edit-project/edit-project.component';
-import { BasicAddFormComponent } from './task-add-form/basic-add-form/basic-add-form.component';
-import { ExtendedAddFormComponent } from './task-add-form/extended-add-form/extended-add-form.component';
+import { BasicTaskAddFormComponent } from './task-add-form/basic-task-add-form/basic-task-add-form.component';
+import { ExtendedTaskAddFormComponent } from './task-add-form/extended-task-add-form/extended-task-add-form.component';
 import { TaskAddFormComponent } from './task-add-form/task-add-form.component';
-import { BasicEditTaskComponent } from './task-list/edit-task/basic-edit-task/basic-edit-task.component';
-import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
-import { ExtendedEditTaskComponent } from './task-list/edit-task/extended-edit-task/extended-edit-task.component';
+import { BasicEditTaskFormComponent } from './task-list/edit-task-form/basic-edit-task-form/basic-edit-task-form.component';
+import { EditTaskFormComponent } from './task-list/edit-task-form/edit-task-form.component';
+import { ExtendedEditTaskFormComponent } from './task-list/edit-task-form/extended-edit-task-form/extended-edit-task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
 const routes: Routes = [
@@ -15,16 +15,16 @@ const routes: Routes = [
   {
     path: 'add-task', component: TaskAddFormComponent,
     children: [
-      { path: 'basic', component: BasicAddFormComponent },
-      { path: 'extended', component: ExtendedAddFormComponent },
+      { path: 'basic', component: BasicTaskAddFormComponent },
+      { path: 'extended', component: ExtendedTaskAddFormComponent },
       { path: '**', redirectTo: 'basic' }
     ]
   },
   {
-    path: 'edit-task/:id', component: EditTaskComponent,
+    path: 'edit-task-form/:id', component: EditTaskFormComponent,
     children: [
-      { path: 'basic', component: BasicEditTaskComponent },
-      { path: 'extended', component: ExtendedEditTaskComponent },
+      { path: 'basic', component: BasicEditTaskFormComponent },
+      { path: 'extended', component: ExtendedEditTaskFormComponent },
       { path: '**', redirectTo: 'basic' }
     ]
   },

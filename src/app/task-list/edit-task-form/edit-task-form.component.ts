@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
-  selector: 'app-edit-task',
-  templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.scss']
+  selector: 'app-edit-task-form',
+  templateUrl: './edit-task-form.component.html',
+  styleUrls: ['./edit-task-form.component.scss']
 })
-export class EditTaskComponent implements OnInit {
+export class EditTaskFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private taskData: TaskDataService) { }

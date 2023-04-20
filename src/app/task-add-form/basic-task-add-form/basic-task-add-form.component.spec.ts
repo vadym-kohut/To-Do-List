@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExtendedAddFormComponent } from './extended-add-form.component';
+import { BasicTaskAddFormComponent } from './basic-task-add-form.component';
 
-describe('ExtendedAddFormComponent', () => {
-  let component: ExtendedAddFormComponent;
-  let fixture: ComponentFixture<ExtendedAddFormComponent>;
+describe('BasicAddFormComponent', () => {
+  let component: BasicTaskAddFormComponent;
+  let fixture: ComponentFixture<BasicTaskAddFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExtendedAddFormComponent ]
+      declarations: [ BasicTaskAddFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExtendedAddFormComponent);
+    fixture = TestBed.createComponent(BasicTaskAddFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExtendedEditTaskComponent } from './extended-edit-task.component';
+import { ExtendedEditTaskFormComponent } from './extended-edit-task-form.component';
 
 describe('ExtendedEditTaskComponent', () => {
-  let component: ExtendedEditTaskComponent;
-  let fixture: ComponentFixture<ExtendedEditTaskComponent>;
+  let component: ExtendedEditTaskFormComponent;
+  let fixture: ComponentFixture<ExtendedEditTaskFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExtendedEditTaskComponent ]
+      declarations: [ ExtendedEditTaskFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExtendedEditTaskComponent);
+    fixture = TestBed.createComponent(ExtendedEditTaskFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

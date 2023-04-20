@@ -10,11 +10,11 @@ import {Tag} from "../../shared/tag";
 import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
-  selector: 'app-extended-add-form',
-  templateUrl: './extended-add-form.component.html',
-  styleUrls: ['./extended-add-form.component.scss']
+  selector: 'app-extended-task-add-form',
+  templateUrl: './extended-task-add-form.component.html',
+  styleUrls: ['./extended-task-add-form.component.scss']
 })
-export class ExtendedAddFormComponent implements OnInit {
+export class ExtendedTaskAddFormComponent implements OnInit {
 
   addTaskForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
