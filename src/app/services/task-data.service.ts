@@ -6,6 +6,7 @@ import {Tag} from "../shared/tag";
 import {SearchQueryDataService} from "./search-query-data.service";
 import {ProjectDataService} from "./project-data.service";
 import {TagDataService} from "./tag-data.service";
+import {TaskCountByPriority} from "../shared/task-count-by-priority";
 
 @Injectable({
   providedIn: 'root'
@@ -99,13 +100,13 @@ export class TaskDataService {
     );
   }
 
-  getTaskCountByPriority$(): Observable<{ High: number, Medium: number, Low: number }> {
+  getTaskCountByPriority$(): Observable<TaskCountByPriority> {
     return this.getTasksBySearch$().pipe(
       map((tasks: Task[]) => {
         return {
-          High: tasks.filter((task) => task.priority === Priority.High).length,
-          Medium: tasks.filter((task) => task.priority === Priority.Medium).length,
-          Low: tasks.filter((task) => task.priority === Priority.Low).length
+          high: tasks.filter((task) => task.priority === Priority.High).length,
+          medium: tasks.filter((task) => task.priority === Priority.Medium).length,
+          low: tasks.filter((task) => task.priority === Priority.Low).length
         }
       })
     );

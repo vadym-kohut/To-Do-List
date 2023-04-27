@@ -10,14 +10,14 @@
 
     </a>
 
-    <span class="fs-4">{{tasksCount$ | async}} tasks of {{allTasksCount$ | async}}</span>
+    <span class="fs-4">{{taskCount$ | async}} tasks of {{allTaskCount$ | async}}</span>
 
     <app-search-bar class="ms-3"></app-search-bar>
   </div>
 
   <div class="container d-flex flex-wrap justify-content-end">
-    <span class="fs-4 p-2">H: {{(taskCountByPriority$ | async)?.High}}</span>
-    <span class="fs-4 p-2">M: {{(taskCountByPriority$ | async)?.Medium}}</span>
-    <span class="fs-4 p-2">L: {{(taskCountByPriority$ | async)?.Low}}</span>
+    <span class="fs-4 p-2">H: {{(taskCountByPriority$ | async)?.high}}</span>
+    <span class="fs-4 p-2">M: {{(taskCountByPriority$ | async)?.medium}}</span>
+    <span class="fs-4 p-2">L: {{(taskCountByPriority$ | async)?.low}}</span>
   </div>
 </header>

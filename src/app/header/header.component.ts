@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { combineLatest, map, Observable } from 'rxjs';
-import { ProjectDataService } from '../services/project-data.service';
+import {Component, OnInit} from '@angular/core';
+import {combineLatest, map, Observable} from 'rxjs';
+import {ProjectDataService} from '../services/project-data.service';
 import {TaskDataService} from "../services/task-data.service";
+import {TaskCountByPriority} from "../shared/task-count-by-priority";
 
 @Component({
   selector: 'app-header',
@@ -10,28 +11,29 @@ import {TaskDataService} from "../services/task-data.service";
 })
 export class HeaderComponent implements OnInit {
 
-  tasksCount$!: Observable<number>;
-  allTasksCount$!: Observable<number>;
-  taskCountByPriority$!: Observable<{ High: number, Medium: number, Low: number }>;
+  taskCount$!: Observable<number>;
+  allTaskCount$!: Observable<number>;
+  taskCountByPriority$!: Observable<TaskCountByPriority>;
   selectedProjectName$!: Observable<null | string>;
 
   constructor(
     private taskData: TaskDataService,
     private projectData: ProjectDataService
-  ) { }
+  ) {
+  }
 
   clearProjectFilter() {
     this.projectData.clearSelectedProject();
   }
 
   ngOnInit(): void {
-    this.tasksCount$ = this.taskData.getTaskCount$();
-    this.allTasksCount$ = this.taskData.getTaskCount$();
+    this.taskCount$ = this.taskData.getTaskCount$();
+    this.allTaskCount$ = this.taskData.getTaskCount$();
     this.taskCountByPriority$ = this.taskData.getTaskCountByPriority$();
     this.selectedProjectName$ = combineLatest([this.projectData.getWorkProjectList$(), this.projectData.getSelectedProject$()]).pipe(
-      map(([projects, selectedProject]) => {
-        const filterArr = projects.filter((project) => project === selectedProject);
-        return filterArr.length ? filterArr[0].title : null;
+      map(([projectList, selectedProject]) => {
+        const filteredProjectList = projectList.filter((project) => project === selectedProject);
+        return filteredProjectList.length ? filteredProjectList[0].title : null;
       })
     );
   }
