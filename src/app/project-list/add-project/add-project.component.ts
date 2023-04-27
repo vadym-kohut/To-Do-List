@@ -16,12 +16,12 @@ export class AddProjectComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private projectStore: ProjectDataService,
+    private projectData: ProjectDataService,
     private router: Router
   ) { }
 
   onSubmit() {
-    this.projectStore.addProject(this.addProjectForm.value);
+    this.projectData.addProject(this.addProjectForm.value);
     this.router.navigateByUrl('/');
   }
 

@@ -23,12 +23,12 @@ export class ProjectComponent implements OnInit {
   showProjectBtns: boolean = false;
 
   constructor(
-    private projectStore: ProjectDataService,
+    private projectData: ProjectDataService,
     public router: Router
   ) { }
 
   setSelectedProject(project: Project) {
-    this.projectStore.setSelectedProject(project);
+    this.projectData.setSelectedProject(project);
   }
 
   navToEditProject(id: number) {

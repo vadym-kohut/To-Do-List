@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs';
-import { SearchQueryDataService } from 'src/app/services/search-query-data.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {debounceTime} from 'rxjs';
+import {SearchQueryDataService} from 'src/app/services/search-query-data.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,10 +12,11 @@ export class SearchBarComponent implements OnInit {
 
   taskSearch = new FormControl();
 
-  constructor(private queryService: SearchQueryDataService) { }
+  constructor(private searchQueryData: SearchQueryDataService) {
+  }
 
   ngOnInit(): void {
     this.taskSearch.valueChanges.pipe(debounceTime(500))
-      .subscribe(query => this.queryService.setQuery(query));
+      .subscribe(searchQuery => this.searchQueryData.setSearchQuery(searchQuery));
   }
 }

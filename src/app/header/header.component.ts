@@ -17,18 +17,18 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private taskData: TaskDataService,
-    private projectStore: ProjectDataService
+    private projectData: ProjectDataService
   ) { }
 
   clearProjectFilter() {
-    this.projectStore.clearSelectedProject();
+    this.projectData.clearSelectedProject();
   }
 
   ngOnInit(): void {
     this.tasksCount$ = this.taskData.getTaskCount$();
     this.allTasksCount$ = this.taskData.getTaskCount$();
     this.taskCountByPriority$ = this.taskData.getTaskCountByPriority$();
-    this.selectedProjectName$ = combineLatest([this.projectStore.getWorkProjectList$(), this.projectStore.getSelectedProject$()]).pipe(
+    this.selectedProjectName$ = combineLatest([this.projectData.getWorkProjectList$(), this.projectData.getSelectedProject$()]).pipe(
       map(([projects, selectedProject]) => {
         const filterArr = projects.filter((project) => project === selectedProject);
         return filterArr.length ? filterArr[0].title : null;

@@ -61,7 +61,7 @@ export class TaskDataService {
   }
 
   getTasksBySearch$() {
-    return combineLatest([this.getTaskList$(), this.searchQueryData.getQuery$(), this.projectData.getSelectedProject$(), this.tagData.getSelectedTagList$()]).pipe(
+    return combineLatest([this.getTaskList$(), this.searchQueryData.getSearchQuery$(), this.projectData.getSelectedProject$(), this.tagData.getSelectedTagList$()]).pipe(
       map(([tasks, query, selectedProject, tags]) => {
         let filteredTasks = tasks;
         if (selectedProject) {

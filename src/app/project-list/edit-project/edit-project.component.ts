@@ -19,7 +19,7 @@ export class EditProjectComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private projectStore: ProjectDataService,
+    private projectData: ProjectDataService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -30,7 +30,7 @@ export class EditProjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.project = this.projectStore.getProjectById(params['id']));
+    this.route.params.subscribe(params => this.project = this.projectData.getProjectById(params['id']));
     this.editProjectForm.controls['title'].setValue(this.project.title);
   }
 

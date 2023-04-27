@@ -6,17 +6,17 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class SearchQueryDataService {
 
-  private queryValue$ = new BehaviorSubject<string>('');
+  private searchQueryValue$ = new BehaviorSubject<string>('');
 
   constructor() {
   }
 
-  getQuery$(): Observable<string> {
-    return this.queryValue$.asObservable();
+  getSearchQuery$(): Observable<string> {
+    return this.searchQueryValue$.asObservable();
   }
 
-  setQuery(query: string) {
-    this.queryValue$.next(query);
+  setSearchQuery(searchQuery: string) {
+    this.searchQueryValue$.next(searchQuery);
   }
 
 }
