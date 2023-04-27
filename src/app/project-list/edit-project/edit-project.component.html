@@ -1,4 +1,4 @@
-<form [formGroup]="editProjectForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="projectEditForm" (ngSubmit)="onSubmit()">
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Title</span>
@@ -6,10 +6,10 @@
       aria-label="title" aria-describedby="addon-wrapping" id="title">
   </div>
 
-  <div class="alert alert-danger" *ngIf="title && title.invalid && (title.dirty || title.touched)">
+  <div class="alert alert-danger" *ngIf="projectToEditTitle && projectToEditTitle.invalid && (projectToEditTitle.dirty || projectToEditTitle.touched)">
     Project title is required!
   </div>
 
   <button id="liveToastBtn" type="submit" class="btn btn-outline-success px-4"
-    [disabled]="!editProjectForm.valid">Edit</button>
+    [disabled]="!projectEditForm.valid">Edit</button>
 </form>

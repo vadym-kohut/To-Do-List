@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ProjectDataService } from 'src/app/services/project-data.service';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ProjectDataService} from 'src/app/services/project-data.service';
 
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.scss']
 })
-export class AddProjectComponent implements OnInit {
+export class AddProjectComponent {
 
-  addProjectForm = this.fb.group({
+  projectAddForm = this.fb.group({
     title: ['', Validators.required]
   })
 
@@ -18,16 +18,16 @@ export class AddProjectComponent implements OnInit {
     private fb: FormBuilder,
     private projectData: ProjectDataService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   onSubmit() {
-    this.projectData.addProject(this.addProjectForm.value);
+    this.projectData.addProject(this.projectAddForm.value);
     this.router.navigateByUrl('/');
   }
 
-  ngOnInit(): void {
+  get projectTitle() {
+    return this.projectAddForm.get('title');
   }
-
-  get title() { return this.addProjectForm.get('title') }
 
 }

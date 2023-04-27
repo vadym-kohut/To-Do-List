@@ -8,19 +8,19 @@ import { Project } from '../../shared/project';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
 
   @Input()
   project!: Project;
 
   @Output()
-  deleteProject = new EventEmitter<number>();
+  ProjectRemoved = new EventEmitter<number>();
 
   removeProject(value: number) {
-    this.deleteProject.emit(value);
+    this.ProjectRemoved.emit(value);
   }
 
-  showProjectBtns: boolean = false;
+  isProjectButtonsShown: boolean = false;
 
   constructor(
     private projectData: ProjectDataService,
@@ -33,9 +33,6 @@ export class ProjectComponent implements OnInit {
 
   navToEditProject(id: number) {
     this.router.navigate(['edit-project', id]);
-  }
-
-  ngOnInit(): void {
   }
 
 }

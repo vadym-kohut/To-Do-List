@@ -1,9 +1,9 @@
-<li (mouseover)="showProjectBtns = true" (mouseleave)="showProjectBtns = false">
+<li (mouseover)="isProjectButtonsShown = true" (mouseleave)="isProjectButtonsShown = false">
   <a (click)="setSelectedProject(project)" class="link-dark rounded">{{project.title}}</a>
 
-  <button *ngIf="showProjectBtns" (click)="removeProject(project.id)"
-    class="btn btn-outline-danger btn-sm py-0 ms-1">X</button>
+  <button *ngIf="isProjectButtonsShown" (click)="removeProject(project.id)"
+          class="btn btn-outline-danger btn-sm py-0 ms-1">X</button>
 
-  <button *ngIf="showProjectBtns" (click)="navToEditProject(project.id)"
-    class="btn btn-outline-warning btn-sm py-0 ms-1">edit</button>
+  <button *ngIf="isProjectButtonsShown" (click)="navToEditProject(project.id)"
+          class="btn btn-outline-warning btn-sm py-0 ms-1">edit</button>
 </li>

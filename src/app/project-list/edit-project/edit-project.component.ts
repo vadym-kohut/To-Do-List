@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectDataService } from 'src/app/services/project-data.service';
-import { Project } from '../../shared/project';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProjectDataService} from 'src/app/services/project-data.service';
+import {Project} from '../../shared/project';
 
 @Component({
   selector: 'app-edit-project',
@@ -11,29 +11,32 @@ import { Project } from '../../shared/project';
 })
 export class EditProjectComponent implements OnInit {
 
-  editProjectForm = this.fb.group({
+  projectEditForm = this.fb.group({
     title: ['', Validators.required]
   })
 
-  project!: Project;
+  projectToEdit!: Project;
 
   constructor(
     private fb: FormBuilder,
     private projectData: ProjectDataService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   onSubmit() {
+    this.projectToEdit.title = this.projectEditForm.value.title;
     this.router.navigateByUrl('/');
-    this.project.title = this.editProjectForm.value.title;
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.project = this.projectData.getProjectById(params['id']));
-    this.editProjectForm.controls['title'].setValue(this.project.title);
+    this.route.params.subscribe(params => this.projectToEdit = this.projectData.getProjectById(params['id']));
+    this.projectEditForm.controls['title'].setValue(this.projectToEdit.title);
   }
 
-  get title() { return this.editProjectForm.get('title') }
+  get projectToEditTitle() {
+    return this.projectEditForm.get('title');
+  }
 
 }

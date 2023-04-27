@@ -13,8 +13,8 @@
       <button class="btn btn-outline-success btn-sm py-0" (click)="navToAddProj()">+</button>
       <div class="collapse show" id="home-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <app-project class="project" *ngFor="let project of projects$ | async" [project]="project"
-            (deleteProject)="deleteProject($event)"></app-project>
+          <app-project class="project" *ngFor="let project of projectList$ | async" [project]="project"
+                       (ProjectRemoved)="removeProject($event)"></app-project>
         </ul>
       </div>
     </li>
