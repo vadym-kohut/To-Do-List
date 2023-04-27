@@ -45,6 +45,30 @@ export class TaskDataService {
       priority: Priority.Medium,
       project: 4,
       id: 4
+    },
+    {
+      title: 'Clean printer',
+      description: 'It is too dirty',
+      tags: ['Home', 'This week', 'Urgent'],
+      priority: Priority.High,
+      project: 1,
+      id: 5
+    },
+    {
+      title: 'Organize wardrobe',
+      description: 'Organize it, it is a mess',
+      tags: ['Home', 'This month', 'Gdańsk'],
+      priority: Priority.Medium,
+      project: 3,
+      id: 6
+    },
+    {
+      title: 'Work laptop',
+      description: 'Fix the noise on work laptop',
+      tags: ['Work', 'Can wait'],
+      priority: Priority.Low,
+      project: 2,
+      id: 7
     }
   ]);
 
