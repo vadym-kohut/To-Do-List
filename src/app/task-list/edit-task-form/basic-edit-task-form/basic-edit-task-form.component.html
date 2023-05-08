@@ -1,4 +1,4 @@
-<form [formGroup]="taskEditForm">
+<form [formGroup]="taskEditForm" (ngSubmit)="onSubmit()">
 
   <div class="input-group mb-2">
     <span class="input-group-text" id="addon-wrapping">Title</span>
@@ -20,7 +20,7 @@
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="button" class="btn btn-outline-danger">Cancel</button>
-    <button type="submit" class="btn btn-outline-success px-4">Add</button>
+    <button type="submit" class="btn btn-outline-success px-4">Edit</button>
   </div>
 
 </form>

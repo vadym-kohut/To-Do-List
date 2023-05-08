@@ -112,6 +112,16 @@ export class TaskDataService {
     this.taskList$.next(this.taskList$.getValue().filter((task) => task.id !== taskToRemove.id));
   }
 
+  editTask(editedTask: Task) {
+    const editedTaskList = this.taskList$.getValue().map(task => {
+      if (task.id === editedTask.id) {
+        return editedTask
+      }
+      return task
+    })
+    this.taskList$.next(editedTaskList);
+  }
+
   getTaskCount$(): Observable<number> {
     return this.getTaskList$().pipe(
       map((tasks: Task[]) => tasks.length)

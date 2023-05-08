@@ -23,9 +23,16 @@ export class ExtendedTaskAddFormComponent implements OnInit {
     tagList: []
   })
   priority = Priority;
-  projectList = this.projectData.getWorkProjectList$();
+  projectList$ = this.projectData.getWorkProjectList$();
   tagDropdownList: string[] = [];
-  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings: IDropdownSettings = {
+    singleSelection: false,
+    textField: 'tag',
+    selectAllText: 'Select All Tags',
+    unSelectAllText: 'UnSelect All Tags',
+    itemsShowLimit: 3,
+    allowSearchFilter: true
+  };
 
   constructor(
     private taskData: TaskDataService,
@@ -45,15 +52,6 @@ export class ExtendedTaskAddFormComponent implements OnInit {
     this.tagData.getTagList$().pipe(
       map(tagArray => this.tagDropdownList = tagArray.map(tagObj => tagObj.tagName)),
     ).subscribe()
-
-    this.dropdownSettings = {
-      singleSelection: false,
-      textField: 'tag',
-      selectAllText: 'Select All Tags',
-      unSelectAllText: 'UnSelect All Tags',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
   get title() {

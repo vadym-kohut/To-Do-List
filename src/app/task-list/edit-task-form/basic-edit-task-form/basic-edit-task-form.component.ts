@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {taskTitleValidator} from 'src/app/shared/task-title.validator';
 import {Task} from '../../../shared/task';
 import {TaskDataService} from "../../../services/task-data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-basic-edit-task-form',
@@ -15,7 +16,9 @@ export class BasicEditTaskFormComponent implements OnInit {
 
   constructor(
     private taskData: TaskDataService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private router: Router
+  ) {
   }
 
   taskEditForm = this.fb.group({
@@ -29,6 +32,14 @@ export class BasicEditTaskFormComponent implements OnInit {
 
   get title() {
     return this.taskEditForm.get('title')
+  }
+
+  onSubmit() {
+    this.taskData.editTask({
+      ...this.taskToEdit,
+      title: this.taskEditForm.value.title
+    });
+    this.router.navigateByUrl('/');
   }
 
 }

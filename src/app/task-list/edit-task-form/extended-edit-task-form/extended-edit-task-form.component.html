@@ -30,16 +30,27 @@
   </div>
 
   <div class="input-group mb-2">
-    <span class="input-group-text">Priority</span>
-    <select formControlName="priority" class="form-select" aria-label="Default select example" name="taskPriority">
-      <option value="1">High</option>
-      <option value="2">Medium</option>
-      <option value="3">Low</option>
+    <span class="input-group-text">Project</span>
+    <select formControlName="project" class="form-select" aria-label="Task project" name="taskProject">
+      <option *ngFor="let project of projectList$ | async" [value]="project.id">{{project.title}}</option>
     </select>
   </div>
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <div class="input-group mb-2">
+    <span class="input-group-text">Priority</span>
+    <select formControlName="priority" class="form-select" aria-label="Default select example" name="taskPriority">
+      <option [value]="priority.High">High</option>
+      <option [value]="priority.Medium">Medium</option>
+      <option [value]="priority.Low">Low</option>
+    </select>
+  </div>
+
+  <ng-multiselect-dropdown [settings]="dropdownSettings" placeholder="Tags" [data]="tagDropdownList"
+                           formControlName="tags">
+  </ng-multiselect-dropdown>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
     <button type="button" class="btn btn-outline-danger">Cancel</button>
-    <button type="submit" class="btn btn-outline-success px-4">Add</button>
+    <button type="submit" class="btn btn-outline-success px-4">Edit</button>
   </div>
 </form>
