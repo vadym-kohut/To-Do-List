@@ -18,17 +18,17 @@ export class BasicEditTaskFormComponent implements OnInit {
     private fb: FormBuilder) {
   }
 
-  addTaskForm = this.fb.group({
+  taskEditForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]]
   })
 
   ngOnInit(): void {
     this.taskToEdit = this.taskData.getTaskToEdit();
-    this.addTaskForm.controls['title'].setValue(this.taskToEdit.title);
+    this.taskEditForm.controls['title'].setValue(this.taskToEdit.title);
   }
 
   get title() {
-    return this.addTaskForm.get('title')
+    return this.taskEditForm.get('title')
   }
 
 }

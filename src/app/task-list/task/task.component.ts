@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '../../shared/task';
 import { Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,26 +9,23 @@ import { Priority } from 'src/app/shared/priority';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
   @Input()
   task!: Task;
 
   @Output()
-  deleteTask = new EventEmitter<Task>();
+  TaskRemoved = new EventEmitter<Task>();
 
-  priorities = Priority;
+  priority = Priority;
 
   removeTask(task: Task) {
-    this.deleteTask.emit(task);
+    this.TaskRemoved.emit(task);
   }
 
   constructor(public router: Router) { }
 
   navToEditTask = (id: number) => {
     this.router.navigate(['edit-task-form', id]);
-  }
-
-  ngOnInit(): void {
   }
 }

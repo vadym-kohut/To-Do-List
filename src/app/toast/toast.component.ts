@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ToastDataService } from '../services/toast-data.service';
 
@@ -7,18 +7,14 @@ import { ToastDataService } from '../services/toast-data.service';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss']
 })
-export class ToastComponent implements OnInit {
+export class ToastComponent {
 
-  toastData$!: Observable<string | null>;
+  toastData$: Observable<string | null> = this.toastData.getToastData$();
 
-  constructor(private toastService: ToastDataService) { }
+  constructor(private toastData: ToastDataService) { }
 
   hideToast() {
-    this.toastService.hideToast();
-  }
-
-  ngOnInit(): void {
-    this.toastData$ = this.toastService.getToastData$();
+    this.toastData.hideToast();
   }
 
 }

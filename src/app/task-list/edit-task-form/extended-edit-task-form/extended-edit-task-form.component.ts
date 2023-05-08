@@ -11,7 +11,7 @@ import {TaskDataService} from "../../../services/task-data.service";
 })
 export class ExtendedEditTaskFormComponent implements OnInit {
 
-  editTaskForm = this.fb.group({
+  taskEditForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
     description: ['', Validators.minLength(5)],
     project: [''],
@@ -29,7 +29,7 @@ export class ExtendedEditTaskFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get title() { return this.editTaskForm.get('title') }
-  get description() { return this.editTaskForm.get('description') }
+  get title() { return this.taskEditForm.get('title') }
+  get description() { return this.taskEditForm.get('description') }
 
 }

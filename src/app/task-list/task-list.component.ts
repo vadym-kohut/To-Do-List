@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoaderDataService } from '../services/loader-data.service';
@@ -11,8 +11,8 @@ import {TaskDataService} from "../services/task-data.service";
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
-  tasks$!: Observable<Task[]>;
+export class TaskListComponent {
+  taskList$: Observable<Task[]> = this.taskData.getTasksBySearch$();
 
   constructor(
     private router: Router,
@@ -33,11 +33,7 @@ export class TaskListComponent implements OnInit {
     this.router.navigateByUrl('/add-task/basic');
   }
 
-  ngOnInit(): void {
-    this.tasks$ = this.taskData.getTasksBySearch$();
-  }
-
-  deleteTask(task: Task) {
+  removeTask(task: Task) {
     this.taskData.removeTask(task);
   }
 

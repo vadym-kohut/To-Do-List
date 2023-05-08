@@ -3,7 +3,7 @@
     <input class="form-check-input flex-shrink-0" type="checkbox" value="">
     <span class="list-item-text flex-grow-1">
       <span
-        [ngClass]="{'fw-bold' : task.priority == priorities.High, 'fw-normal' : task.priority == priorities.Medium || task.priority == null, 'fw-light' : task.priority == priorities.Low}">
+        [ngClass]="{'fw-bold' : task.priority == priority.High, 'fw-normal' : task.priority == priority.Medium || task.priority == null, 'fw-light' : task.priority == priority.Low}">
         {{task.title}}
       </span>
       <small class="d-block text-muted">{{task.description}}</small>
