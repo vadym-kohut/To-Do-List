@@ -15,7 +15,7 @@ export class EditTaskFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.taskData.taskIdToEdit = params['id']);
+    this.route.params.subscribe(params => this.taskData.taskIdToEdit = +params['id']);
   }
 
 }
