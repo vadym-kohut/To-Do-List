@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { taskTitleValidator } from 'src/app/shared/task-title.validator';
-import { Priority } from 'src/app/shared/priority';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {taskTitleValidator} from 'src/app/shared/task-title.validator';
+import {Priority} from 'src/app/shared/priority';
 import {TaskDataService} from "../../../services/task-data.service";
 import {Task} from "../../../shared/task";
 import {ProjectDataService} from "../../../services/project-data.service";
@@ -47,7 +47,8 @@ export class ExtendedEditTaskFormComponent implements OnInit {
     private fb: FormBuilder,
     private tagData: TagDataService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.tagData.getTagList$().pipe(
@@ -70,7 +71,12 @@ export class ExtendedEditTaskFormComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  get title() { return this.taskEditForm.get('title') }
-  get description() { return this.taskEditForm.get('description') }
+  get title() {
+    return this.taskEditForm.get('title')
+  }
+
+  get description() {
+    return this.taskEditForm.get('description')
+  }
 
 }
