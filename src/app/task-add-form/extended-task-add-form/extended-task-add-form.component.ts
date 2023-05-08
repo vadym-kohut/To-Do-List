@@ -24,7 +24,7 @@ export class ExtendedTaskAddFormComponent implements OnInit {
   })
   priority = Priority;
   projectList = this.projectData.getWorkProjectList$();
-  tagsDropdown: string[] = [];
+  tagDropdownList: string[] = [];
   dropdownSettings: IDropdownSettings = {};
 
   constructor(
@@ -43,7 +43,7 @@ export class ExtendedTaskAddFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.tagData.getTagList$().pipe(
-      map(tagArr => this.tagsDropdown = tagArr.map(tagObj => tagObj.tagName)),
+      map(tagArray => this.tagDropdownList = tagArray.map(tagObj => tagObj.tagName)),
     ).subscribe()
 
     this.dropdownSettings = {

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { taskTitleValidator } from 'src/app/shared/task-title.validator';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {taskTitleValidator} from 'src/app/shared/task-title.validator';
+import {Router} from '@angular/router';
 import {TaskDataService} from "../../services/task-data.service";
 
 @Component({
@@ -9,25 +9,26 @@ import {TaskDataService} from "../../services/task-data.service";
   templateUrl: './basic-task-add-form.component.html',
   styleUrls: ['./basic-task-add-form.component.scss']
 })
-export class BasicTaskAddFormComponent implements OnInit {
+export class BasicTaskAddFormComponent {
 
-  addTaskForm = this.fb.group({
+  taskAddForm = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(20), taskTitleValidator]],
   })
 
   constructor(
     private taskData: TaskDataService,
-    private fb: FormBuilder, private router: Router
-  ) { }
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+  }
 
   onSubmit() {
-    this.taskData.addTask(this.addTaskForm.value);
+    this.taskData.addTask(this.taskAddForm.value);
     this.router.navigateByUrl('/');
   }
 
-  ngOnInit(): void {
+  get taskTitle() {
+    return this.taskAddForm.get('title')
   }
-
-  get title() { return this.addTaskForm.get('title') }
 
 }
