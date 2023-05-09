@@ -56,11 +56,7 @@ export class ExtendedEditTaskFormComponent implements OnInit {
     ).subscribe()
 
     this.taskToEdit = this.taskData.getTaskToEdit();
-    this.taskEditForm.controls['title'].setValue(this.taskToEdit.title);
-    this.taskEditForm.controls['description'].setValue(this.taskToEdit.description);
-    this.taskEditForm.controls['project'].setValue(this.taskToEdit.project);
-    this.taskEditForm.controls['priority'].setValue(this.taskToEdit.priority);
-    this.taskEditForm.controls['tags'].setValue(this.taskToEdit.tags);
+    this.taskEditForm.setValue(this.taskToEdit);
   }
 
   onSubmit() {
