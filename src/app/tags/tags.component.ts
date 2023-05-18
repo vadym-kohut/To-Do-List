@@ -32,4 +32,7 @@ export class TagsComponent {
     this.tagData.clearSelectedTagList();
   }
 
+  addTag(newTagName: string) {
+    this.tagData.addTag(newTagName)
+  }
 }
